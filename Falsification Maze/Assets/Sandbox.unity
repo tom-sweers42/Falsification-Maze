@@ -210,7 +210,8 @@ MonoBehaviour:
   mazeRows: 8
   mazeColumns: 10
   wall: {fileID: 101274, guid: 2a571ace6952b154ca2ff06b0540f264, type: 3}
-  size: 6
+  size: 2
+  materialFinish: {fileID: 2100000, guid: b5f3b49cab6337447a3e72cbfd6cc246, type: 2}
 --- !u!4 &1062459227
 Transform:
   m_ObjectHideFlags: 0

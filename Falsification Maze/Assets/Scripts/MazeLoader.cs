@@ -5,9 +5,11 @@ public class MazeLoader : MonoBehaviour {
 	public int mazeRows, mazeColumns;
 	public GameObject wall;
 	public float size = 2f;
+	
+	public Material materialFinish;
 
 	private MazeCell[,] mazeCells;
-
+	private MazeCell finishCell;
 	// Use this for initialization
 	void Start () {
 		InitializeMaze ();
@@ -23,7 +25,6 @@ public class MazeLoader : MonoBehaviour {
 	private void InitializeMaze() {
 
 		mazeCells = new MazeCell[mazeRows,mazeColumns];
-
 		for (int r = 0; r < mazeRows; r++) {
 			for (int c = 0; c < mazeColumns; c++) {
 				mazeCells [r, c] = new MazeCell ();
@@ -50,7 +51,25 @@ public class MazeLoader : MonoBehaviour {
 				mazeCells[r,c].southWall = Instantiate (wall, new Vector3 ((r*size) + (size/2f), 0, c*size), Quaternion.identity) as GameObject;
 				mazeCells [r, c].southWall.name = "South Wall " + r + "," + c;
 				mazeCells [r, c].southWall.transform.Rotate (Vector3.up * 90f);
+
+				if(c == mazeColumns -1 && r == mazeRows - 1)
+				{
+					mazeCells[r, c].southWall = Instantiate(wall, new Vector3((r * size) + (size / 2f), 0, c * size), Quaternion.identity) as GameObject;
+					mazeCells[r, c].southWall.name = "South Wall " + r + "," + c;
+					mazeCells[r, c].southWall.transform.Rotate(Vector3.up * 90f);
+					
+						//materialFinish
+					MeshRenderer meshRenderer = mazeCells[r, c].southWall.GetComponent<MeshRenderer>();
+					meshRenderer.material = materialFinish;
+
+					mazeCells[r, c].eastWall = Instantiate(wall, new Vector3(r * size, 0, (c * size) + (size / 2f)), Quaternion.identity) as GameObject;
+					mazeCells[r, c].eastWall.name = "East Wall " + r + "," + c;
+
+					MeshRenderer meshRenderer2 = mazeCells[r, c].eastWall.GetComponent<MeshRenderer>();
+					meshRenderer2.material = materialFinish;
+				}
 			}
 		}
+		finishCell = mazeCells[mazeRows-1, mazeColumns-1];
 	}
 }
