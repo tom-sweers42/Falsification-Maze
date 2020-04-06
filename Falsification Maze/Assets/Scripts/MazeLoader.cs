@@ -1,33 +1,76 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
+using System;
 public class MazeLoader : MonoBehaviour {
 	public int mazeRows, mazeColumns;
+    public int randomDeletesDivider;
 	public GameObject wall;
 	public float size = 2f;
-	
-	public Material materialFinish;
 
-	private MazeCell[,] mazeCells;
-	private MazeCell finishCell;
+	public Material materialFinish;
+	public Material materialPath;
+
+    public Material materialNormal;
+    public GameObject player;
+	public MazeCell[,] mazeCells;
 	// Use this for initialization
 	void Start () {
 		InitializeMaze ();
 
 		MazeAlgorithm ma = new HuntAndKillMazeAlgorithm (mazeCells);
 		ma.CreateMaze ();
+        deleteRandomWalls();
+        ma.addShortestPaths(materialPath);
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 	}
 
+    public void deleteRandomWalls() {
+        int randomDeletes = Convert.ToInt32((mazeColumns*mazeRows)/randomDeletesDivider);
+        for (int i = 0; i < randomDeletes; i++) {
+            int r = UnityEngine.Random.Range(0, mazeRows-1);
+            int c = UnityEngine.Random.Range(0, mazeColumns-1);
+            int direction = UnityEngine.Random.Range(0,2);
+
+            if (direction == 0) {
+                if (!DestroyWallIfItExists(mazeCells[r,c].southWall)) {
+                    i--;
+                }
+            }
+            else {
+                if (!DestroyWallIfItExists(mazeCells[r,c].eastWall)) {
+                    i--;
+                }
+            }
+        }
+    }
+	private bool DestroyWallIfItExists(GameObject wall) {
+		if (wall != null) {
+			GameObject.Destroy (wall);
+            wall.SetActive(false);
+            return true;
+		}
+        return false;
+	}
+    public void clearPath() {
+		for (int r = 0; r < mazeRows; r++) {
+			for (int c = 0; c < mazeColumns; c++) {
+				if(c != mazeColumns -1 || r != mazeRows - 1) {
+					MeshRenderer meshRenderer = mazeCells[r, c].floor.GetComponent<MeshRenderer>();
+					meshRenderer.material = materialNormal;
+                }
+            }
+        }
+    }
 	private void InitializeMaze() {
 
 		mazeCells = new MazeCell[mazeRows,mazeColumns];
 		for (int r = 0; r < mazeRows; r++) {
 			for (int c = 0; c < mazeColumns; c++) {
-				mazeCells [r, c] = new MazeCell ();
+                mazeCells [r, c] = new MazeCell (c,r);
 
 				// For now, use the same wall object for the floor!
 				mazeCells [r, c] .floor = Instantiate (wall, new Vector3 (r*size, -(size/2f), c*size), Quaternion.identity) as GameObject;
@@ -54,22 +97,20 @@ public class MazeLoader : MonoBehaviour {
 
 				if(c == mazeColumns -1 && r == mazeRows - 1)
 				{
-					mazeCells[r, c].southWall = Instantiate(wall, new Vector3((r * size) + (size / 2f), 0, c * size), Quaternion.identity) as GameObject;
-					mazeCells[r, c].southWall.name = "South Wall " + r + "," + c;
-					mazeCells[r, c].southWall.transform.Rotate(Vector3.up * 90f);
-					
+
 						//materialFinish
 					MeshRenderer meshRenderer = mazeCells[r, c].southWall.GetComponent<MeshRenderer>();
 					meshRenderer.material = materialFinish;
 
-					mazeCells[r, c].eastWall = Instantiate(wall, new Vector3(r * size, 0, (c * size) + (size / 2f)), Quaternion.identity) as GameObject;
-					mazeCells[r, c].eastWall.name = "East Wall " + r + "," + c;
 
 					MeshRenderer meshRenderer2 = mazeCells[r, c].eastWall.GetComponent<MeshRenderer>();
 					meshRenderer2.material = materialFinish;
 				}
 			}
 		}
-		finishCell = mazeCells[mazeRows-1, mazeColumns-1];
+
+
 	}
 }
+
+
