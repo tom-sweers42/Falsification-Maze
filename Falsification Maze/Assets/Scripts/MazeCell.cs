@@ -7,7 +7,7 @@ public class MazeCell {
     public bool discovered = false;
     public List<MazeCell> path;
     public MazeCell next;
-	public GameObject northWall, southWall, eastWall, westWall, floor;
+	public GameObject northWall, southWall, eastWall, westWall, floor, roof;
 
     public MazeCell(int c, int r){
         this.c = c;

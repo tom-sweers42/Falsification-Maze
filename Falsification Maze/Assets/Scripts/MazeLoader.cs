@@ -77,6 +77,11 @@ public class MazeLoader : MonoBehaviour {
 				mazeCells [r, c] .floor.name = "Floor " + r + "," + c;
 				mazeCells [r, c] .floor.transform.Rotate (Vector3.right, 90f);
 
+				mazeCells [r, c] .roof = Instantiate (wall, new Vector3 (r*size, (size/2f), c*size), Quaternion.identity) as GameObject;
+				mazeCells [r, c] .roof.name = "Roof " + r + "," + c;
+				mazeCells [r, c] .roof.transform.Rotate (Vector3.right, 90f);
+
+
 				if (c == 0) {
 					mazeCells[r,c].westWall = Instantiate (wall, new Vector3 (r*size, 0, (c*size) - (size/2f)), Quaternion.identity) as GameObject;
 					mazeCells [r, c].westWall.name = "West Wall " + r + "," + c;
