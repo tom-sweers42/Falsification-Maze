@@ -7,15 +7,22 @@ public class MazeLoader : MonoBehaviour {
     public int randomDeletesDivider;
 	public GameObject wall;
 	public float size = 2f;
-
+    public float timeLimit;
+    private float timeLeft;
+    private float initialIntensity;
 	public Material materialFinish;
 	public Material materialPath;
 
     public Material materialNormal;
     public GameObject player;
+    public GameObject light;
+
 	public MazeCell[,] mazeCells;
 	// Use this for initialization
 	void Start () {
+        timeLeft = timeLimit;
+        Light lightComponent = light.GetComponent<Light>();
+        initialIntensity = lightComponent.intensity;
 		InitializeMaze ();
 
 		MazeAlgorithm ma = new HuntAndKillMazeAlgorithm (mazeCells);
@@ -26,6 +33,9 @@ public class MazeLoader : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        timeLeft -= Time.deltaTime;
+        Light lightComponent = light.GetComponent<Light>();
+        lightComponent.intensity = initialIntensity * (timeLeft/timeLimit);
 	}
 
     public void deleteRandomWalls() {
