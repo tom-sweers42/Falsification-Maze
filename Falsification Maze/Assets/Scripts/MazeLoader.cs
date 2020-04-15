@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.UIElements;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System;
@@ -18,13 +20,15 @@ public class MazeLoader : MonoBehaviour {
     public GameObject light;
 
 	public MazeCell[,] mazeCells;
+    public GameObject tilesCounterFieldObject;
+    public Text tilesCounterField;
 	// Use this for initialization
 	void Start () {
         timeLeft = timeLimit;
         Light lightComponent = light.GetComponent<Light>();
         initialIntensity = lightComponent.intensity;
 		InitializeMaze ();
-
+        tilesCounterField = tilesCounterFieldObject.GetComponent<Text>();
 		MazeAlgorithm ma = new HuntAndKillMazeAlgorithm (mazeCells);
 		ma.CreateMaze ();
         deleteRandomWalls();

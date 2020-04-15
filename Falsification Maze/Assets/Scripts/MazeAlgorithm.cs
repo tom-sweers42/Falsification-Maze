@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
 public abstract class MazeAlgorithm {
 	protected MazeCell[,] mazeCells;
 	protected int mazeRows, mazeColumns;
@@ -28,7 +27,7 @@ public abstract class MazeAlgorithm {
         //     meshRenderer.material = materialPath;
         // }
         MazeCell next = mazeCells[0,0];
-        next.drawRoute(materialPath);
+        int pathLength = next.drawRoute(materialPath, 0);
     }
 
     public void shortestPath(Queue<List<MazeCell>> currentPaths, Queue<MazeCell> mazeQueue, MazeCell cell) {

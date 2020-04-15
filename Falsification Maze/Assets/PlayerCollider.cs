@@ -28,7 +28,8 @@ public class PlayerCollider : MonoBehaviour
             int r = Int32.Parse(pair.Split(',')[0]);
             int c = Int32.Parse(pair.Split(',')[1]);
             gameManager.clearPath();
-            gameManager.mazeCells[r,c].drawRoute(materialPath);
+            int pathLength = gameManager.mazeCells[r,c].drawRoute(materialPath, 0);
+            gameManager.tilesCounterField.text = pathLength.ToString();
 
         }
     }

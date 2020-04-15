@@ -14,12 +14,34 @@ public class MazeCell {
         this.r = r;
     }
 
-    public void drawRoute(Material materialPath) {
+    public int drawRoute(Material materialPath, int counter) {
         MeshRenderer meshRenderer = this.floor.GetComponent<MeshRenderer>();
         meshRenderer.material = materialPath;
         if (next != null) {
-            next.drawRoute(materialPath);
+            counter = next.drawRoute(materialPath, counter + 1);
         }
 
+        return counter;
+
+    }
+
+    public void showDirection(){
+        if (next != null) {
+            int rDir = next.r - r;
+            int cDir = next.c - c;
+
+            if (rDir == 0 && cDir == -1) {
+                //north
+            }
+            if (rDir == 0 && cDir == 1) {
+                //south
+            }
+            if (rDir == -1 && cDir == 0) {
+                //west
+            }
+            if (rDir == 1 && cDir == 0) {
+                //east
+            }
+        }
     }
 }
