@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+
 public class MazeCell {
     public int c,r;
 	public bool visited = false;

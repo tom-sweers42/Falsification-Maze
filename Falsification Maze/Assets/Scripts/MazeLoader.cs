@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System;
+
 public class MazeLoader : MonoBehaviour {
 	public int mazeRows, mazeColumns;
     public int randomDeletesDivider;
@@ -15,18 +16,28 @@ public class MazeLoader : MonoBehaviour {
     private float initialIntensity;
 	public Material materialFinish;
 	public Material materialPath;
-	public Material[] symbols = new Material[4];
+
+	public Material materialMarkerFar;
+	public Material materialMarkerNear;
+	public Material materialMarkerCorrect;
+    public int threshold = 5;
+
+    public Material[] symbols = new Material[4];
 	public String[] symbolNames = new String[4];
 
     public Material materialNormal;
     public GameObject player;
-    public GameObject light;
+    public new GameObject light;
 
 	public MazeCell[,] mazeCells;
     public GameObject tilesCounterFieldObject;
     public Text tilesCounterField;
-	// Use this for initialization
-	void Start () {
+
+	public int initPathLength;
+    private int cellPathLength;
+
+    // Use this for initialization
+    void Start () {
         timeLeft = timeLimit;
         Light lightComponent = light.GetComponent<Light>();
         initialIntensity = lightComponent.intensity;
@@ -34,9 +45,10 @@ public class MazeLoader : MonoBehaviour {
         tilesCounterField = tilesCounterFieldObject.GetComponent<Text>();
 		MazeAlgorithm ma = new HuntAndKillMazeAlgorithm (mazeCells);
 		ma.CreateMaze ();
-        deleteRandomWalls();
-		addRandomSymbols();
-        ma.addShortestPaths(materialPath);
+		DeleteRandomWalls();
+        AddRandomSymbols();
+        initPathLength = ma.addShortestPaths(materialPath, 0, 0);
+        AddPathBasedColor(ma);
 	}
 
 	// Update is called once per frame
@@ -46,7 +58,7 @@ public class MazeLoader : MonoBehaviour {
         lightComponent.intensity = initialIntensity * (timeLeft/timeLimit);
 	}
 
-	public void addRandomSymbols() 
+	public void AddRandomSymbols() 
 	{
 		int randomAdditions = Convert.ToInt32((mazeColumns*mazeRows)/randomAdditionsDivider);
 		for (int i =0; i < randomAdditions; i++) {
@@ -59,18 +71,96 @@ public class MazeLoader : MonoBehaviour {
 			{
 				MeshRenderer meshRenderer = mazeCells[r, c].southWall.GetComponent<MeshRenderer>();
 				meshRenderer.material = symbols[symbol];
-				mazeCells[r, c].floor.name = symbolNames[symbol];
+				//mazeCells[r, c].floor.name = symbolNames[symbol];
 			}		
 			else
 			{
 				MeshRenderer meshRenderer = mazeCells[r, c].eastWall.GetComponent<MeshRenderer>();
 				meshRenderer.material = symbols[symbol];
-				mazeCells[r, c].floor.name = symbolNames[symbol];				
+				//mazeCells[r, c].floor.name = symbolNames[symbol];				
 			}
 		}
 	}
 
-    public void deleteRandomWalls() {
+    void AddPathBasedColor(MazeAlgorithm ma)
+    {
+        int randomAdditions = Convert.ToInt32((mazeColumns * mazeRows) / randomAdditionsDivider);
+        for (int i = 0; i < randomAdditions; i++)
+        {
+            int r = UnityEngine.Random.Range(0, mazeRows - 1);
+            int c = UnityEngine.Random.Range(0, mazeColumns - 1);
+            cellPathLength = ma.addShortestPaths(materialPath, r, c);
+            ColorObject(r, c, initPathLength, cellPathLength);
+        }
+    }
+
+    void ColorObject(int r, int c, int initPathLength, int cellPathLength)
+    {
+        int direction = UnityEngine.Random.Range(0, 3);
+        if (direction == 0)
+        {
+            MeshRenderer meshRenderer = mazeCells[r, c].southWall.GetComponent<MeshRenderer>();
+
+            if (initPathLength < cellPathLength && cellPathLength <= initPathLength + threshold)
+            {
+                meshRenderer.material = materialMarkerNear;
+            }
+            else if (initPathLength + threshold < cellPathLength)
+            {
+                meshRenderer.material = materialMarkerFar;
+
+            }
+            else if (cellPathLength <= initPathLength)
+            {
+                meshRenderer.material = materialMarkerCorrect;
+            }
+            else { }
+        }
+
+        else if (direction == 1)
+        {
+            MeshRenderer meshRenderer = mazeCells[r, c].eastWall.GetComponent<MeshRenderer>();
+
+            if (initPathLength < cellPathLength && cellPathLength <= initPathLength + threshold)
+            {
+                meshRenderer.material = materialMarkerNear;
+            }
+            else if (initPathLength + threshold < cellPathLength)
+            {
+                meshRenderer.material = materialMarkerFar;
+
+            }
+            else if (cellPathLength <= initPathLength)
+            {
+                meshRenderer.material = materialMarkerCorrect;
+            }
+            else { }
+
+        }
+
+        else
+        {
+            MeshRenderer meshRenderer = mazeCells[r, c].roof.GetComponent<MeshRenderer>();
+
+            if (initPathLength < cellPathLength && cellPathLength <= initPathLength + threshold)
+            {
+                meshRenderer.material = materialMarkerNear;
+            }
+            else if (initPathLength + threshold < cellPathLength)
+            {
+                meshRenderer.material = materialMarkerFar;
+
+            }
+            else if (cellPathLength <= initPathLength)
+            {
+                meshRenderer.material = materialMarkerCorrect;
+            }
+            else { }
+
+        }
+    }
+
+    public void DeleteRandomWalls() {
         int randomDeletes = Convert.ToInt32((mazeColumns*mazeRows)/randomDeletesDivider);
         for (int i = 0; i < randomDeletes; i++) {
             int r = UnityEngine.Random.Range(0, mazeRows-1);
@@ -98,7 +188,8 @@ public class MazeLoader : MonoBehaviour {
 		}
         return false;
 	}
-    public void clearPath() {
+
+    public void ClearPath() {
 		for (int r = 0; r < mazeRows; r++) {
 			for (int c = 0; c < mazeColumns; c++) {
 				if(c != mazeColumns -1 || r != mazeRows - 1) {
@@ -108,6 +199,7 @@ public class MazeLoader : MonoBehaviour {
             }
         }
     }
+
 	private void InitializeMaze() {
 
 		mazeCells = new MazeCell[mazeRows,mazeColumns];

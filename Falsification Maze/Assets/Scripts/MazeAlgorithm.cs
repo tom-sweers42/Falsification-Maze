@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+
 public abstract class MazeAlgorithm {
 	protected MazeCell[,] mazeCells;
 	protected int mazeRows, mazeColumns;
@@ -13,7 +14,8 @@ public abstract class MazeAlgorithm {
 	}
 
 	public abstract void CreateMaze ();
-    public void addShortestPaths(Material materialPath) {
+
+    public int addShortestPaths(Material materialPath, int r, int c) {
 		finishCell = mazeCells[mazeRows-1, mazeColumns-1];
         finishCell.discovered = true;
         List<MazeCell> finishPath = new List<MazeCell>();
@@ -26,8 +28,10 @@ public abstract class MazeAlgorithm {
         //     MeshRenderer meshRenderer = cell.floor.GetComponent<MeshRenderer>();
         //     meshRenderer.material = materialPath;
         // }
-        MazeCell next = mazeCells[0,0];
+        MazeCell next = mazeCells[r,c];
+        Debug.Log("MazeCells Shape: " + mazeCells.GetLength(0).ToString() + "," + mazeCells.GetLength(1).ToString());
         int pathLength = next.drawRoute(materialPath, 0);
+        return pathLength; // return value for wall coloring
     }
 
     public void shortestPath(Queue<List<MazeCell>> currentPaths, Queue<MazeCell> mazeQueue, MazeCell cell) {

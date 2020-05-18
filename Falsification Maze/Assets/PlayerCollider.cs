@@ -11,17 +11,18 @@ public class PlayerCollider : MonoBehaviour
     public Material materialPath;
     public Material materialRight;
     public Material materialLeft;
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
+    //// Start is called before the first frame update
+    //void Start()
+    //{
 
-    // Update is called once per frame
-    void Update()
-    {
+    //}
 
-    }
+    //// Update is called once per frame
+    //void Update()
+    //{
+
+    //}
 
     void OnTriggerEnter(Collider other) {
         Debug.Log(other.gameObject.name);
@@ -37,9 +38,10 @@ public class PlayerCollider : MonoBehaviour
             string pair = curFloor.name.Split(' ')[1];
             int r = Int32.Parse(pair.Split(',')[0]);
             int c = Int32.Parse(pair.Split(',')[1]);
-            gameManager.clearPath();
-            int pathLength = gameManager.mazeCells[r,c].drawRoute(materialPath, 0);
-            gameManager.tilesCounterField.text = pathLength.ToString();
+            gameManager.ClearPath();
+            int currPathLength = gameManager.mazeCells[r, c].drawRoute(materialPath, 0);
+            Debug.Log("Current Path Length: " + currPathLength.ToString());
+            gameManager.tilesCounterField.text = currPathLength.ToString();
 
         }
     }
