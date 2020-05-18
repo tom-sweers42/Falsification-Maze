@@ -45,8 +45,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mazeRows: 10
   mazeColumns: 10
+  randomDeletesDivider: 0
   wall: {fileID: 101274, guid: 2a571ace6952b154ca2ff06b0540f264, type: 3}
   size: 6
+  timeLimit: 0
   materialFinish: {fileID: 2100000, guid: b5f3b49cab6337447a3e72cbfd6cc246, type: 2}
   materialPath: {fileID: 2100000, guid: 120cca34f02085b44b9c53ebf638fb16, type: 2}
+  materialLeft: {fileID: 2100000, guid: ecb3367de463adb4d87d44eef651f55e, type: 2}
+  materialRight: {fileID: 2100000, guid: d3ed44a83ac48834cbd1736362056c69, type: 2}
+  materialNormal: {fileID: 0}
   player: {fileID: 3550818245609008881, guid: 7e9e77995c533624ebdcad8fd00d61ca, type: 3}
+  light: {fileID: 0}
+  tilesCounterFieldObject: {fileID: 0}
+  tilesCounterField: {fileID: 0}

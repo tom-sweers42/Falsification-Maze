@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerCollider : MonoBehaviour
 {
     private GameObject curFloor;
     public MazeLoader gameManager;
     public Material materialPath;
+    public Material materialRight;
+    public Material materialLeft;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +25,13 @@ public class PlayerCollider : MonoBehaviour
 
     void OnTriggerEnter(Collider other) {
         Debug.Log(other.gameObject.name);
+        if (other.gameObject.name == "END")
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            SceneManager.LoadScene("Menu");
+        }
+
         if (other.gameObject.name.StartsWith("Floor") && curFloor != other.gameObject) {
             curFloor = other.gameObject;
             string pair = curFloor.name.Split(' ')[1];

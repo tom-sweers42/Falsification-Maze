@@ -32,15 +32,19 @@ public class MazeCell {
 
             if (rDir == 0 && cDir == -1) {
                 //north
+                Debug.Log("NORTH");
             }
             if (rDir == 0 && cDir == 1) {
                 //south
+                Debug.Log("SOUTH");
             }
             if (rDir == -1 && cDir == 0) {
                 //west
+                Debug.Log("WEST");
             }
             if (rDir == 1 && cDir == 0) {
                 //east
+                Debug.Log("EAST");
             }
         }
     }
