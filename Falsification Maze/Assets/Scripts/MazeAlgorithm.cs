@@ -15,8 +15,11 @@ public abstract class MazeAlgorithm {
 
 	public abstract void CreateMaze ();
 
-    public int addShortestPaths(Material materialPath, int r, int c) {
+    public int addShortestPaths(Material materialPath, int r, int c, bool correct) {
+
 		finishCell = mazeCells[mazeRows-1, mazeColumns-1];
+        if (!correct)
+            finishCell = mazeCells[0, mazeColumns-1];
         finishCell.discovered = true;
         List<MazeCell> finishPath = new List<MazeCell>();
         Queue<List<MazeCell>> currentPaths = new Queue<List<MazeCell>>();
@@ -29,7 +32,6 @@ public abstract class MazeAlgorithm {
         //     meshRenderer.material = materialPath;
         // }
         MazeCell next = mazeCells[r,c];
-        Debug.Log("MazeCells Shape: " + mazeCells.GetLength(0).ToString() + "," + mazeCells.GetLength(1).ToString());
         int pathLength = next.drawRoute(materialPath, 0);
         return pathLength; // return value for wall coloring
     }
@@ -44,6 +46,7 @@ public abstract class MazeAlgorithm {
             mazeQueue.Enqueue(mazeCells[cell.r-1, cell.c]);
             mazeCells[cell.r-1, cell.c].discovered = true;
             mazeCells[cell.r-1, cell.c].next = cell;
+            cell.kids.Add(mazeCells[cell.r-1, cell.c]);
         }
 
         if (!cell.eastWall.activeSelf && cell.c<mazeColumns && !mazeCells[cell.r, cell.c+1].discovered) {
@@ -52,6 +55,7 @@ public abstract class MazeAlgorithm {
             mazeQueue.Enqueue(mazeCells[cell.r, cell.c+1]);
             mazeCells[cell.r, cell.c+1].discovered = true;
             mazeCells[cell.r, cell.c+1].next = cell;
+            cell.kids.Add(mazeCells[cell.r, cell.c+1]);
         }
 
         if (!cell.southWall.activeSelf && cell.r<mazeRows && !mazeCells[cell.r+1, cell.c].discovered) {
@@ -60,6 +64,7 @@ public abstract class MazeAlgorithm {
             mazeQueue.Enqueue(mazeCells[cell.r+1, cell.c]);
             mazeCells[cell.r+1, cell.c].discovered = true;
             mazeCells[cell.r+1, cell.c].next = cell;
+            cell.kids.Add(mazeCells[cell.r+1, cell.c]);
         }
 
         if (cell.c>0 && !mazeCells[cell.r, cell.c-1].eastWall.activeSelf && !mazeCells[cell.r, cell.c-1].discovered) {
@@ -68,6 +73,7 @@ public abstract class MazeAlgorithm {
             mazeQueue.Enqueue(mazeCells[cell.r, cell.c-1]);
             mazeCells[cell.r, cell.c-1].discovered = true;
             mazeCells[cell.r, cell.c-1].next = cell;
+            cell.kids.Add(mazeCells[cell.r, cell.c-1]);
         }
         if (mazeQueue.Count > 0) {
             MazeCell next = mazeQueue.Dequeue();
@@ -76,4 +82,5 @@ public abstract class MazeAlgorithm {
 
 
     }
+
 }

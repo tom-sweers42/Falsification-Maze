@@ -10,6 +10,7 @@ public class MazeLoader : MonoBehaviour {
     public int randomDeletesDivider;
 	public int randomAdditionsDivider;
 	public GameObject wall;
+    public GameObject dotWall;
 	public float size = 2f;
     public float timeLimit;
     private float timeLeft;
@@ -45,10 +46,10 @@ public class MazeLoader : MonoBehaviour {
         tilesCounterField = tilesCounterFieldObject.GetComponent<Text>();
 		MazeAlgorithm ma = new HuntAndKillMazeAlgorithm (mazeCells);
 		ma.CreateMaze ();
-		DeleteRandomWalls();
+		// DeleteRandomWalls();
         AddRandomSymbols();
-        initPathLength = ma.addShortestPaths(materialPath, 0, 0);
-        AddPathBasedColor(ma);
+        initPathLength = ma.addShortestPaths(materialPath, 0, 0, true);
+        AddPathBasedColor();
 	}
 
 	// Update is called once per frame
@@ -58,7 +59,7 @@ public class MazeLoader : MonoBehaviour {
         lightComponent.intensity = initialIntensity * (timeLeft/timeLimit);
 	}
 
-	public void AddRandomSymbols() 
+	public void AddRandomSymbols()
 	{
 		int randomAdditions = Convert.ToInt32((mazeColumns*mazeRows)/randomAdditionsDivider);
 		for (int i =0; i < randomAdditions; i++) {
@@ -72,31 +73,163 @@ public class MazeLoader : MonoBehaviour {
 				MeshRenderer meshRenderer = mazeCells[r, c].southWall.GetComponent<MeshRenderer>();
 				meshRenderer.material = symbols[symbol];
 				//mazeCells[r, c].floor.name = symbolNames[symbol];
-			}		
+			}
 			else
 			{
 				MeshRenderer meshRenderer = mazeCells[r, c].eastWall.GetComponent<MeshRenderer>();
 				meshRenderer.material = symbols[symbol];
-				//mazeCells[r, c].floor.name = symbolNames[symbol];				
+				//mazeCells[r, c].floor.name = symbolNames[symbol];
 			}
 		}
 	}
 
-    void AddPathBasedColor(MazeAlgorithm ma)
+    void AddPathBasedColor()
     {
-        int randomAdditions = Convert.ToInt32((mazeColumns * mazeRows) / randomAdditionsDivider);
-        for (int i = 0; i < randomAdditions; i++)
-        {
-            int r = UnityEngine.Random.Range(0, mazeRows - 1);
-            int c = UnityEngine.Random.Range(0, mazeColumns - 1);
-            cellPathLength = ma.addShortestPaths(materialPath, r, c);
-            ColorObject(r, c, initPathLength, cellPathLength);
+
+		for (int r = 0; r < mazeRows; r++) {
+			for (int c = 0; c < mazeColumns; c++) {
+                MazeCell cell = mazeCells[r,c];
+                if (cell.hasMoreThanOneOpening(mazeCells)) {
+                    ColorCode(cell);
+                    // ColorObject(r,c, initPathLength, pathLength);
+                }
+            }
         }
+
+        // int randomAdditions = Convert.ToInt32((mazeColumns * mazeRows) / randomAdditionsDivider);
+        // for (int i = 0; i < randomAdditions; i++)
+        // {
+        //     int r = UnityEngine.Random.Range(0, mazeRows - 1);
+        //     int c = UnityEngine.Random.Range(0, mazeColumns - 1);
+        //     cellPathLength = ma.addShortestPaths(materialPath, r, c, true);
+        //     ColorObject(r, c, initPathLength, cellPathLength);
+        // }
+    }
+    void ColorCode(MazeCell cell) {
+        int maxLength = longestPath(mazeCells[mazeRows-1, mazeColumns-1]);
+
+        int pathLength = cell.drawRoute(materialPath, 0);
+        float divisor = (float) pathLength/maxLength;
+        var curDotWall = GameObject.Instantiate(dotWall, cell.roof.transform.position, cell.roof.transform.rotation);
+        var middleDot = curDotWall.transform.Find("MiddleDot");
+        var upDot = curDotWall.transform.Find("UpDot");
+        var downDot = curDotWall.transform.Find("DownDot");
+        var leftDot = curDotWall.transform.Find("LeftDot");
+        var rightDot = curDotWall.transform.Find("RightDot");
+        Destroy(cell.roof);
+        MeshRenderer meshRenderer = middleDot.GetComponent<MeshRenderer>();
+        meshRenderer.material = materialMarkerCorrect;
+        meshRenderer.material.color = new Color((float) 1f-0.06f*(1f-divisor),(float) 1-divisor,0f,1f);
+
+
+        if (!cell.southWall.activeSelf)
+        {
+            MazeCell southCell = mazeCells[cell.r+1, cell.c];
+            int southCellPathLength = southCell.drawRoute(materialPath,0);
+
+            var meshRendererSouth = leftDot.GetComponent<MeshRenderer>();
+            meshRendererSouth.material = materialMarkerCorrect;
+            meshRendererSouth.material.color =  colourDirDot(pathLength, southCellPathLength);
+        }
+        else
+            Destroy(leftDot.gameObject);
+        if (!cell.eastWall.activeSelf)
+        {
+            MazeCell eastCell = mazeCells[cell.r, cell.c+1];
+            int eastCellPathLength = eastCell.drawRoute(materialPath,0);
+
+            var meshRendererEast = upDot.GetComponent<MeshRenderer>();
+            meshRendererEast.material = materialMarkerCorrect;
+            meshRendererEast.material.color =  colourDirDot(pathLength, eastCellPathLength);
+        }
+        else
+            Destroy(upDot.gameObject);
+        if (cell.r == 0){
+            if (!cell.northWall.activeSelf) {
+                MazeCell northCell = mazeCells[cell.r-1, cell.c];
+                int northCellPathLength = northCell.drawRoute(materialPath,0);
+
+                var meshRendererNorth = rightDot.GetComponent<MeshRenderer>();
+                meshRendererNorth.material = materialMarkerCorrect;
+                meshRendererNorth.material.color =  colourDirDot(pathLength, northCellPathLength);
+            }
+            else
+                Destroy(rightDot.gameObject);
+        }
+        if (cell.c == 0) {
+            if (!cell.westWall.activeSelf) {
+                MazeCell westCell = mazeCells[cell.r, cell.c-1];
+                int westCellPathLength = westCell.drawRoute(materialPath,0);
+
+                var meshRendererWest = downDot.GetComponent<MeshRenderer>();
+                meshRendererWest.material = materialMarkerCorrect;
+                meshRendererWest.material.color =  colourDirDot(pathLength, westCellPathLength);
+            }
+            else
+                Destroy(downDot.gameObject);
+        }
+        if (cell.r > 0 && !mazeCells[cell.r-1,cell.c].southWall.activeSelf) {
+            MazeCell northCell = mazeCells[cell.r-1, cell.c];
+            int northCellPathLength = northCell.drawRoute(materialPath,0);
+
+            var meshRendererNorth = rightDot.GetComponent<MeshRenderer>();
+            meshRendererNorth.material = materialMarkerCorrect;
+            meshRendererNorth.material.color =  colourDirDot(pathLength, northCellPathLength);
+        }
+        else
+            Destroy(rightDot.gameObject);
+        if (cell.c > 0 && !mazeCells[cell.r,cell.c-1].eastWall.activeSelf)
+        {
+                MazeCell westCell = mazeCells[cell.r, cell.c-1];
+                int westCellPathLength = westCell.drawRoute(materialPath,0);
+
+                var meshRendererWest = downDot.GetComponent<MeshRenderer>();
+                meshRendererWest.material = materialMarkerCorrect;
+                meshRendererWest.material.color =  colourDirDot(pathLength, westCellPathLength);
+            }
+            else
+                Destroy(downDot.gameObject);
+
+
+
+        Texture2D texture = new Texture2D(128, 128);
+        cell.roof.GetComponent<Renderer>().material.mainTexture = texture;
+
     }
 
+    public Color colourDirDot(int pathLength, int newPathLength) {
+        int diff = pathLength - newPathLength;
+        if (diff == 1) {
+            Debug.Log("Setting Colour to green");
+            return Color.green;
+        }
+        else if (diff == -1) {
+            Debug.Log("Setting Colour to magenta");
+            return Color.white;
+        }
+        else {
+            Debug.Log("Setting Colour to blue");
+            return Color.blue;
+        }
+    }
+    public int longestPath(MazeCell cell) {
+        int maxPathLength = 0;
+        if (cell.kids.Count > 0) {
+            foreach (MazeCell kid in cell.kids) {
+                int pathLength = longestPath(kid);
+                if (pathLength > maxPathLength)
+                    maxPathLength = pathLength;
+            }
+            return maxPathLength + 1;
+        }
+        else
+            return 0;
+        return maxPathLength;
+    }
     void ColorObject(int r, int c, int initPathLength, int cellPathLength)
     {
-        int direction = UnityEngine.Random.Range(0, 3);
+        // int direction = UnityEngine.Random.Range(0, 3);
+        int direction = 2;
         if (direction == 0)
         {
             MeshRenderer meshRenderer = mazeCells[r, c].southWall.GetComponent<MeshRenderer>();
