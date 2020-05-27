@@ -1814,12 +1814,12 @@ PrefabInstance:
     - target: {fileID: 4194800998294751530, guid: 0393e88e96b3c334b874ed4ac44fb3ab,
         type: 3}
       propertyPath: mazeColumns
-      value: 30
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4194800998294751530, guid: 0393e88e96b3c334b874ed4ac44fb3ab,
         type: 3}
       propertyPath: mazeRows
-      value: 30
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4194800998294751530, guid: 0393e88e96b3c334b874ed4ac44fb3ab,
         type: 3}
@@ -1906,6 +1906,11 @@ PrefabInstance:
         type: 3}
       propertyPath: correctPath
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194800998294751530, guid: 0393e88e96b3c334b874ed4ac44fb3ab,
+        type: 3}
+      propertyPath: size
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4194800998294751531, guid: 0393e88e96b3c334b874ed4ac44fb3ab,
         type: 3}

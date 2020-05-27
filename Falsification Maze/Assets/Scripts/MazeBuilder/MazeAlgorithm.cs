@@ -34,9 +34,9 @@ public abstract class MazeAlgorithm {
             next.kids.Remove(prev);
             (int j, MazeCell path) = longestPath(next);
             l = j;
-            Debug.Log(l);
-            Debug.Log(path.r);
-            Debug.Log(path.c);
+            Debug.Log("split cell: " + next.r + ", " + next.c);
+            Debug.Log("max depth: " + l);
+            Debug.Log("end cell: "+ path.r + ", " + path.c);
             greenPathFinishCell = path;
         }
         return greenPathFinishCell;
@@ -74,18 +74,24 @@ public abstract class MazeAlgorithm {
         if (cell.kids.Count > 0) {
             foreach (MazeCell kid in cell.kids) {
                 (int pathLength, MazeCell deepCell) = longestPath(kid);
-                if (pathLength > maxPathLength)
+                if (pathLength > maxPathLength) {
                     maxPathLength = pathLength;
                     maxDeepCell = deepCell;
+                }
+                    // Debug.Log("max cell: " + maxDeepCell.r + ", " + maxDeepCell.c);
+                    // Debug.Log("cell: " + cell.r + ", " + cell.c);
             }
             return (maxPathLength + 1, maxDeepCell );
         }
-        return (maxPathLength, maxDeepCell);
+        return (0, cell);
     }
     public void shortestPath(Queue<List<MazeCell>> currentPaths, Queue<MazeCell> mazeQueue, MazeCell cell) {
         // List<MazeCell> currentPath = new List<MazeCell>(currentPaths.Dequeue());
         // currentPath.Add(cell);
         // cell.path = currentPath;
+        // if (mazeCells[cell.r-1, cell.c].discovered) {
+        //     Debug.Log("Loop Alert!!!");
+        // }
         if (cell.r>0 && !mazeCells[cell.r-1, cell.c].southWall.activeSelf && !mazeCells[cell.r-1, cell.c].discovered) {
             // Debug.Log("Path North");
             // currentPaths.Enqueue(cell.path);
@@ -95,6 +101,9 @@ public abstract class MazeAlgorithm {
             cell.kids.Add(mazeCells[cell.r-1, cell.c]);
         }
 
+        // if (mazeCells[cell.r, cell.c+1].discovered) {
+        //     Debug.Log("Loop Alert!!!");
+        // }
         if (!cell.eastWall.activeSelf && cell.c<mazeColumns && !mazeCells[cell.r, cell.c+1].discovered) {
             // Debug.Log("Path East");
             // currentPaths.Enqueue(cell.path);
@@ -104,6 +113,9 @@ public abstract class MazeAlgorithm {
             cell.kids.Add(mazeCells[cell.r, cell.c+1]);
         }
 
+        // if (mazeCells[cell.r+1, cell.c].discovered) {
+        //     Debug.Log("Loop Alert!!!");
+        // }
         if (!cell.southWall.activeSelf && cell.r<mazeRows && !mazeCells[cell.r+1, cell.c].discovered) {
             // Debug.Log("Path South");
             // currentPaths.Enqueue(cell.path);
@@ -112,6 +124,9 @@ public abstract class MazeAlgorithm {
             mazeCells[cell.r+1, cell.c].next = cell;
             cell.kids.Add(mazeCells[cell.r+1, cell.c]);
         }
+        // if (mazeCells[cell.r, cell.c-1].discovered) {
+        //     Debug.Log("Loop Alert!!!");
+        // }
 
         if (cell.c>0 && !mazeCells[cell.r, cell.c-1].eastWall.activeSelf && !mazeCells[cell.r, cell.c-1].discovered) {
             // Debug.Log("Path West");
