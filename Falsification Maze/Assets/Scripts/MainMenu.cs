@@ -5,14 +5,25 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void PlayGame () 
+    public void PlayGame ()
     {
+        CrossSceneInformationClass.level += 1;
         Cursor.visible = false;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (CrossSceneInformationClass.level < 5) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + CrossSceneInformationClass.level);
+        }
+        else {
+            QuitGame();
+        }
     }
 
     public void QuitGame()
     {
         Application.Quit();
     }
+}
+
+
+public static class CrossSceneInformationClass {
+    public static int level { get; set; } = 0;
 }

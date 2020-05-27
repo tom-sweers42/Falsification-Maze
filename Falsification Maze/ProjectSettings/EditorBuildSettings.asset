@@ -9,6 +9,15 @@ EditorBuildSettings:
     path: Assets/Menu.unity
     guid: b5e137be9a106504d997147b66c5bf92
   - enabled: 1
-    path: Assets/Sandbox.unity
-    guid: 03ace6102d521654d82119a05e91f81e
+    path: Assets/Level 1.unity
+    guid: bac293d3ee4e99144921e8e7987f3ab3
+  - enabled: 1
+    path: Assets/Level 2.unity
+    guid: f86756ec429ff5d48b4999d4ac60a1cd
+  - enabled: 1
+    path: Assets/Level 3.unity
+    guid: ea639cd5bcc2f2d47a658dac61f9bc64
+  - enabled: 1
+    path: Assets/Level 4.unity
+    guid: 5f4f4d1e856b9484c86b224447e3772b
   m_configObjects: {}
