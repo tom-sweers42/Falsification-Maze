@@ -31,8 +31,6 @@ public class MazeCell {
     }
 
     public bool hasMoreThanOneOpening(MazeCell[,] mazeCells ) {
-        Debug.Log(r);
-        Debug.Log(c);
         int counter = 0;
         if (!southWall.activeSelf)
         {
@@ -61,7 +59,6 @@ public class MazeCell {
 
         }
         // Debug.Log(counter);
-        Debug.Log(counter);
         return counter>2;
     }
     public void showDirection(){

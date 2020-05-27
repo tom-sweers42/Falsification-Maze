@@ -15,11 +15,41 @@ public abstract class MazeAlgorithm {
 
 	public abstract void CreateMaze ();
 
-    public int addShortestPaths(Material materialPath, int r, int c, bool correct) {
+    public MazeCell findWrongFinish(int pathLength){
+        MazeCell next = mazeCells[0,0];
+        MazeCell greenPathFinishCell = null;
 
-		finishCell = mazeCells[mazeRows-1, mazeColumns-1];
-        if (!correct)
-            finishCell = mazeCells[0, mazeColumns-1];
+
+
+        MazeCell prev = null;
+        int halfPath = pathLength / 4;
+        for (int i = 0; i <= halfPath-1; i++) {
+            prev = next;
+            next = next.next;
+        }
+        int l = 0;
+        while (l <= 10) {
+            prev = next;
+            next = next.next;
+            next.kids.Remove(prev);
+            (int j, MazeCell path) = longestPath(next);
+            l = j;
+            Debug.Log(l);
+            Debug.Log(path.r);
+            Debug.Log(path.c);
+            greenPathFinishCell = path;
+        }
+        return greenPathFinishCell;
+    }
+    public int addShortestPaths(Material materialPath, int r, int c, int fr, int fc) {
+
+        foreach (MazeCell cell in mazeCells) {
+            cell.discovered = false;
+            cell.kids = new List<MazeCell>();
+            cell.next = null;
+        }
+
+		finishCell = mazeCells[fr, fc];
         finishCell.discovered = true;
         List<MazeCell> finishPath = new List<MazeCell>();
         Queue<List<MazeCell>> currentPaths = new Queue<List<MazeCell>>();
@@ -31,11 +61,27 @@ public abstract class MazeAlgorithm {
         //     MeshRenderer meshRenderer = cell.floor.GetComponent<MeshRenderer>();
         //     meshRenderer.material = materialPath;
         // }
+
         MazeCell next = mazeCells[r,c];
         int pathLength = next.drawRoute(materialPath, 0);
+
         return pathLength; // return value for wall coloring
     }
 
+    public (int, MazeCell) longestPath(MazeCell cell) {
+        int maxPathLength = 0;
+        MazeCell maxDeepCell = cell;
+        if (cell.kids.Count > 0) {
+            foreach (MazeCell kid in cell.kids) {
+                (int pathLength, MazeCell deepCell) = longestPath(kid);
+                if (pathLength > maxPathLength)
+                    maxPathLength = pathLength;
+                    maxDeepCell = deepCell;
+            }
+            return (maxPathLength + 1, maxDeepCell );
+        }
+        return (maxPathLength, maxDeepCell);
+    }
     public void shortestPath(Queue<List<MazeCell>> currentPaths, Queue<MazeCell> mazeQueue, MazeCell cell) {
         // List<MazeCell> currentPath = new List<MazeCell>(currentPaths.Dequeue());
         // currentPath.Add(cell);

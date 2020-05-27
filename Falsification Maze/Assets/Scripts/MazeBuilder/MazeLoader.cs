@@ -15,6 +15,8 @@ public class MazeLoader : MonoBehaviour {
     public float timeLimit;
     private float timeLeft;
     private float initialIntensity;
+
+    public bool correctPath;
 	public Material materialFinish;
 	public Material materialPath;
 
@@ -48,8 +50,12 @@ public class MazeLoader : MonoBehaviour {
 		ma.CreateMaze ();
 		// DeleteRandomWalls();
         AddRandomSymbols();
-        initPathLength = ma.addShortestPaths(materialPath, 0, 0, true);
+        initPathLength = ma.addShortestPaths(materialPath, 0, 0, mazeRows-1, mazeColumns -1);
         AddPathBasedColor();
+        if (!correctPath) {
+            MazeCell newFinish = ma.findWrongFinish(initPathLength);
+            ma.addShortestPaths(materialPath,0,0, newFinish.r, newFinish.c);
+        }
 	}
 
 	// Update is called once per frame
@@ -106,7 +112,7 @@ public class MazeLoader : MonoBehaviour {
         // }
     }
     void ColorCode(MazeCell cell) {
-        int maxLength = longestPath(mazeCells[mazeRows-1, mazeColumns-1]);
+        int maxLength = LongestPathLength(mazeCells[mazeRows-1, mazeColumns-1]);
 
         int pathLength = cell.drawRoute(materialPath, 0);
         float divisor = (float) pathLength/maxLength;
@@ -200,23 +206,20 @@ public class MazeLoader : MonoBehaviour {
     public Color colourDirDot(int pathLength, int newPathLength) {
         int diff = pathLength - newPathLength;
         if (diff == 1) {
-            Debug.Log("Setting Colour to green");
             return Color.green;
         }
         else if (diff == -1) {
-            Debug.Log("Setting Colour to magenta");
             return Color.white;
         }
         else {
-            Debug.Log("Setting Colour to blue");
             return Color.blue;
         }
     }
-    public int longestPath(MazeCell cell) {
+    public int LongestPathLength(MazeCell cell) {
         int maxPathLength = 0;
         if (cell.kids.Count > 0) {
             foreach (MazeCell kid in cell.kids) {
-                int pathLength = longestPath(kid);
+                int pathLength = LongestPathLength(kid);
                 if (pathLength > maxPathLength)
                     maxPathLength = pathLength;
             }
