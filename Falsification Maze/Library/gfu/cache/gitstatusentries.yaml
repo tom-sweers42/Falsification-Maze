@@ -13,73 +13,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 6
-  lastUpdatedAtString: 2020-05-28T12:53:35.962+02:00
-  initializedAtString: 2020-05-28T11:59:16.197+02:00
+  lastUpdatedAtString: 2020-05-28T13:13:52.994+02:00
+  initializedAtString: 2020-05-28T12:55:31.438+02:00
   entries:
-  - path: Falsification Maze\Assets\Prefabs\DotRoof.prefab
-    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Assets\Prefabs\DotRoof.prefab
-    projectPath: Assets\Prefabs\DotRoof.prefab
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Falsification Maze\Assets\Prefabs\DotRoof.prefab.meta
-    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Assets\Prefabs\DotRoof.prefab.meta
-    projectPath: Assets\Prefabs\DotRoof.prefab.meta
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Falsification Maze\Assets\Prefabs\Test Variant.prefab
-    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Assets\Prefabs\Test
-      Variant.prefab
-    projectPath: Assets\Prefabs\Test Variant.prefab
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 5
-  - path: Falsification Maze\Assets\Prefabs\Test Variant.prefab.meta
-    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Assets\Prefabs\Test
-      Variant.prefab.meta
-    projectPath: Assets\Prefabs\Test Variant.prefab.meta
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 5
-  - path: Falsification Maze\Assets\Prefabs\Wall 1.prefab
-    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Assets\Prefabs\Wall
-      1.prefab
-    projectPath: Assets\Prefabs\Wall 1.prefab
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Falsification Maze\Assets\Prefabs\Wall 1.prefab.meta
-    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Assets\Prefabs\Wall
-      1.prefab.meta
-    projectPath: Assets\Prefabs\Wall 1.prefab.meta
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
   - path: Falsification Maze\Assets\Scripts\GameScrips\PlayerCollider.cs
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
       2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Assets\Scripts\GameScrips\PlayerCollider.cs
     projectPath: Assets\Scripts\GameScrips\PlayerCollider.cs
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Falsification Maze\Assets\Scripts\MazeBuilder\MazeAlgorithm.cs
-    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Assets\Scripts\MazeBuilder\MazeAlgorithm.cs
-    projectPath: Assets\Scripts\MazeBuilder\MazeAlgorithm.cs
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Falsification Maze\Assets\Scripts\MazeBuilder\MazeLoader.cs
-    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Assets\Scripts\MazeBuilder\MazeLoader.cs
-    projectPath: Assets\Scripts\MazeBuilder\MazeLoader.cs
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
@@ -95,20 +35,6 @@ MonoBehaviour:
       2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\0e\0e98fd9b7f95db98558e96c6fa27c15f
     projectPath: Library\Artifacts\0e\0e98fd9b7f95db98558e96c6fa27c15f
     originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Falsification Maze\Library\Artifacts\13\1330fd757344bc81621c93d982360db5
-    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\13\1330fd757344bc81621c93d982360db5
-    projectPath: Library\Artifacts\13\1330fd757344bc81621c93d982360db5
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Falsification Maze\Library\Artifacts\19\19161d1c0997945f7227e6874bd4fc22
-    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\19\19161d1c0997945f7227e6874bd4fc22
-    projectPath: Library\Artifacts\19\19161d1c0997945f7227e6874bd4fc22
-    originalPath: 
     indexStatus: 0
     workTreeStatus: 5
   - path: Falsification Maze\Library\Artifacts\1e\1ec87027f3108f341243deb3dbf7043d
@@ -116,40 +42,33 @@ MonoBehaviour:
       2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\1e\1ec87027f3108f341243deb3dbf7043d
     projectPath: Library\Artifacts\1e\1ec87027f3108f341243deb3dbf7043d
     originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Falsification Maze\Library\Artifacts\22\224adc64fd0629b03913b7bd0b8b6298
-    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\22\224adc64fd0629b03913b7bd0b8b6298
-    projectPath: Library\Artifacts\22\224adc64fd0629b03913b7bd0b8b6298
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
+    indexStatus: 0
+    workTreeStatus: 5
   - path: Falsification Maze\Library\Artifacts\28\289c0e1b2b6192c07365bd34946239ab
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
       2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\28\289c0e1b2b6192c07365bd34946239ab
     projectPath: Library\Artifacts\28\289c0e1b2b6192c07365bd34946239ab
     originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
+    indexStatus: 0
+    workTreeStatus: 5
   - path: Falsification Maze\Library\Artifacts\2e\2ee8b11032706d705615083eb438c733
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
       2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\2e\2ee8b11032706d705615083eb438c733
     projectPath: Library\Artifacts\2e\2ee8b11032706d705615083eb438c733
     originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Falsification Maze\Library\Artifacts\3b\3bb7c6f85a7f7d05fd627ed3502c9671
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: Falsification Maze\Library\Artifacts\35\35b9c0dcef69c37d998ec4a15725075c
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\3b\3bb7c6f85a7f7d05fd627ed3502c9671
-    projectPath: Library\Artifacts\3b\3bb7c6f85a7f7d05fd627ed3502c9671
+      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\35\35b9c0dcef69c37d998ec4a15725075c
+    projectPath: Library\Artifacts\35\35b9c0dcef69c37d998ec4a15725075c
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Falsification Maze\Library\Artifacts\51\519c9f2837dfee3d1697cc8771217193
+  - path: Falsification Maze\Library\Artifacts\3b\3b429800f2a643f495e8893fa57fbec0
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\51\519c9f2837dfee3d1697cc8771217193
-    projectPath: Library\Artifacts\51\519c9f2837dfee3d1697cc8771217193
+      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\3b\3b429800f2a643f495e8893fa57fbec0
+    projectPath: Library\Artifacts\3b\3b429800f2a643f495e8893fa57fbec0
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
@@ -158,68 +77,61 @@ MonoBehaviour:
       2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\51\51fd218ecd02cb6d1dabc518b4df3e6a
     projectPath: Library\Artifacts\51\51fd218ecd02cb6d1dabc518b4df3e6a
     originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
+    indexStatus: 0
+    workTreeStatus: 5
   - path: Falsification Maze\Library\Artifacts\52\522f863a9157500fc6f7207927ca68ee
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
       2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\52\522f863a9157500fc6f7207927ca68ee
     projectPath: Library\Artifacts\52\522f863a9157500fc6f7207927ca68ee
     originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Falsification Maze\Library\Artifacts\54\54c4d4f7b8a6710c2a3e00933bad634e
-    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\54\54c4d4f7b8a6710c2a3e00933bad634e
-    projectPath: Library\Artifacts\54\54c4d4f7b8a6710c2a3e00933bad634e
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Falsification Maze\Library\Artifacts\54\54e123e158a09450326f4cb5f66d1b6d
-    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\54\54e123e158a09450326f4cb5f66d1b6d
-    projectPath: Library\Artifacts\54\54e123e158a09450326f4cb5f66d1b6d
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
+    indexStatus: 0
+    workTreeStatus: 5
   - path: Falsification Maze\Library\Artifacts\5b\5b036bc1d1cde746e6cc22ea2832d726
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
       2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\5b\5b036bc1d1cde746e6cc22ea2832d726
     projectPath: Library\Artifacts\5b\5b036bc1d1cde746e6cc22ea2832d726
     originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
+    indexStatus: 0
+    workTreeStatus: 5
   - path: Falsification Maze\Library\Artifacts\5b\5bac09d9866a801e8f1cbb2bd66e40c6
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
       2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\5b\5bac09d9866a801e8f1cbb2bd66e40c6
     projectPath: Library\Artifacts\5b\5bac09d9866a801e8f1cbb2bd66e40c6
     originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Falsification Maze\Library\Artifacts\5b\5bb60d97b2a81b7be06b3cc77dd02f2c
-    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\5b\5bb60d97b2a81b7be06b3cc77dd02f2c
-    projectPath: Library\Artifacts\5b\5bb60d97b2a81b7be06b3cc77dd02f2c
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
+    indexStatus: 0
+    workTreeStatus: 5
   - path: Falsification Maze\Library\Artifacts\60\608886b1f29f642d07cc85f53332d363
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
       2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\60\608886b1f29f642d07cc85f53332d363
     projectPath: Library\Artifacts\60\608886b1f29f642d07cc85f53332d363
     originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
+    indexStatus: 0
+    workTreeStatus: 5
   - path: Falsification Maze\Library\Artifacts\67\676c4c104985cd14e67492ec816e60f8
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
       2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\67\676c4c104985cd14e67492ec816e60f8
     projectPath: Library\Artifacts\67\676c4c104985cd14e67492ec816e60f8
     originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: Falsification Maze\Library\Artifacts\6a\6a8da4c9bae4b2d09b5f31679e316bfa
+    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
+      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\6a\6a8da4c9bae4b2d09b5f31679e316bfa
+    projectPath: Library\Artifacts\6a\6a8da4c9bae4b2d09b5f31679e316bfa
+    originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Falsification Maze\Library\Artifacts\7b\7bb2f0a044c1405992c02d4a80d12093
+  - path: Falsification Maze\Library\Artifacts\6d\6d2144ccd80b28225175b1ef0db300b4
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\7b\7bb2f0a044c1405992c02d4a80d12093
-    projectPath: Library\Artifacts\7b\7bb2f0a044c1405992c02d4a80d12093
+      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\6d\6d2144ccd80b28225175b1ef0db300b4
+    projectPath: Library\Artifacts\6d\6d2144ccd80b28225175b1ef0db300b4
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Falsification Maze\Library\Artifacts\7c\7c25fddc8ed4cca05a53f77db7718324
+    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
+      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\7c\7c25fddc8ed4cca05a53f77db7718324
+    projectPath: Library\Artifacts\7c\7c25fddc8ed4cca05a53f77db7718324
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
@@ -228,47 +140,47 @@ MonoBehaviour:
       2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\7d\7d8987ccffb6db352e31ae812a4c007b
     projectPath: Library\Artifacts\7d\7d8987ccffb6db352e31ae812a4c007b
     originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Falsification Maze\Library\Artifacts\95\955e079b468fd647ad3f0c811a1fd584
-    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\95\955e079b468fd647ad3f0c811a1fd584
-    projectPath: Library\Artifacts\95\955e079b468fd647ad3f0c811a1fd584
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Falsification Maze\Library\Artifacts\95\956f338c268a6e670bc62e625defba70
-    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\95\956f338c268a6e670bc62e625defba70
-    projectPath: Library\Artifacts\95\956f338c268a6e670bc62e625defba70
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Falsification Maze\Library\Artifacts\95\95b2dfe005178687389cc653c4484d49
-    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\95\95b2dfe005178687389cc653c4484d49
-    projectPath: Library\Artifacts\95\95b2dfe005178687389cc653c4484d49
-    originalPath: 
     indexStatus: 0
     workTreeStatus: 5
+  - path: Falsification Maze\Library\Artifacts\90\90b1a488c38b77027a4f6f04c74b52ef
+    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
+      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\90\90b1a488c38b77027a4f6f04c74b52ef
+    projectPath: Library\Artifacts\90\90b1a488c38b77027a4f6f04c74b52ef
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
   - path: Falsification Maze\Library\Artifacts\96\96214e2a2d7798ec9f3d6c8a798df424
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
       2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\96\96214e2a2d7798ec9f3d6c8a798df424
     projectPath: Library\Artifacts\96\96214e2a2d7798ec9f3d6c8a798df424
     originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
+    indexStatus: 0
+    workTreeStatus: 5
   - path: Falsification Maze\Library\Artifacts\9b\9b28855438bed0cf41c30eb5829dbf16
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
       2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\9b\9b28855438bed0cf41c30eb5829dbf16
     projectPath: Library\Artifacts\9b\9b28855438bed0cf41c30eb5829dbf16
     originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: Falsification Maze\Library\Artifacts\9c\9ce0bc9d659d4462e959566ad38eb358
+    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
+      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\9c\9ce0bc9d659d4462e959566ad38eb358
+    projectPath: Library\Artifacts\9c\9ce0bc9d659d4462e959566ad38eb358
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
   - path: Falsification Maze\Library\Artifacts\9d\9d4fa69f3a7e6cc509f30a96dc02ce4b
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
       2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\9d\9d4fa69f3a7e6cc509f30a96dc02ce4b
     projectPath: Library\Artifacts\9d\9d4fa69f3a7e6cc509f30a96dc02ce4b
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: Falsification Maze\Library\Artifacts\a2\a249ddc01c7882f1bc55b2ae946f7ff0
+    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
+      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\a2\a249ddc01c7882f1bc55b2ae946f7ff0
+    projectPath: Library\Artifacts\a2\a249ddc01c7882f1bc55b2ae946f7ff0
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
@@ -277,33 +189,47 @@ MonoBehaviour:
       2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\a7\a78615f651cb3bbe22ea7222ab220be8
     projectPath: Library\Artifacts\a7\a78615f651cb3bbe22ea7222ab220be8
     originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: Falsification Maze\Library\Artifacts\a7\a7dc14577cb7331e0a10d26d9c0459d4
+    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
+      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\a7\a7dc14577cb7331e0a10d26d9c0459d4
+    projectPath: Library\Artifacts\a7\a7dc14577cb7331e0a10d26d9c0459d4
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
   - path: Falsification Maze\Library\Artifacts\ae\ae7b8665c1f47ccb2a56617263189fb7
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
       2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\ae\ae7b8665c1f47ccb2a56617263189fb7
     projectPath: Library\Artifacts\ae\ae7b8665c1f47ccb2a56617263189fb7
     originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Falsification Maze\Library\Artifacts\b0\b06ecbd844a78464f14128d1cb3ce096
-    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\b0\b06ecbd844a78464f14128d1cb3ce096
-    projectPath: Library\Artifacts\b0\b06ecbd844a78464f14128d1cb3ce096
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Falsification Maze\Library\Artifacts\ba\bade41d4b075d5dbbc21dd906b21cb83
-    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\ba\bade41d4b075d5dbbc21dd906b21cb83
-    projectPath: Library\Artifacts\ba\bade41d4b075d5dbbc21dd906b21cb83
-    originalPath: 
     indexStatus: 0
     workTreeStatus: 5
+  - path: Falsification Maze\Library\Artifacts\b0\b0ddd596abe3b3c07761d2130faba165
+    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
+      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\b0\b0ddd596abe3b3c07761d2130faba165
+    projectPath: Library\Artifacts\b0\b0ddd596abe3b3c07761d2130faba165
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Falsification Maze\Library\Artifacts\b6\b6e2e123e9821b67614352c0eaed13ac
+    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
+      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\b6\b6e2e123e9821b67614352c0eaed13ac
+    projectPath: Library\Artifacts\b6\b6e2e123e9821b67614352c0eaed13ac
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
   - path: Falsification Maze\Library\Artifacts\be\be3a820d78d189542bba4de4947b87c8
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
       2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\be\be3a820d78d189542bba4de4947b87c8
     projectPath: Library\Artifacts\be\be3a820d78d189542bba4de4947b87c8
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: Falsification Maze\Library\Artifacts\c4\c4082106bb0cae37d868c23e07347ed3
+    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
+      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\c4\c4082106bb0cae37d868c23e07347ed3
+    projectPath: Library\Artifacts\c4\c4082106bb0cae37d868c23e07347ed3
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
@@ -312,33 +238,26 @@ MonoBehaviour:
       2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\cf\cf7992ffd00d73d809669c4717f39a64
     projectPath: Library\Artifacts\cf\cf7992ffd00d73d809669c4717f39a64
     originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
+    indexStatus: 0
+    workTreeStatus: 5
   - path: Falsification Maze\Library\Artifacts\d2\d2e278b45a1eb083f1c6fe404e65333e
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
       2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\d2\d2e278b45a1eb083f1c6fe404e65333e
     projectPath: Library\Artifacts\d2\d2e278b45a1eb083f1c6fe404e65333e
     originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Falsification Maze\Library\Artifacts\d8\d80959deb4899176ba1e73883ebe22a4
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: Falsification Maze\Library\Artifacts\d7\d7b7ced0ce784e5d6a4ffa6f66250bda
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\d8\d80959deb4899176ba1e73883ebe22a4
-    projectPath: Library\Artifacts\d8\d80959deb4899176ba1e73883ebe22a4
+      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\d7\d7b7ced0ce784e5d6a4ffa6f66250bda
+    projectPath: Library\Artifacts\d7\d7b7ced0ce784e5d6a4ffa6f66250bda
     originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
+    indexStatus: 0
+    workTreeStatus: 5
   - path: Falsification Maze\Library\Artifacts\d8\d863640ef03722c566023dfe893910b4
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
       2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\d8\d863640ef03722c566023dfe893910b4
     projectPath: Library\Artifacts\d8\d863640ef03722c566023dfe893910b4
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Falsification Maze\Library\Artifacts\da\dad23be049b8e030198f910f302c51de
-    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\da\dad23be049b8e030198f910f302c51de
-    projectPath: Library\Artifacts\da\dad23be049b8e030198f910f302c51de
     originalPath: 
     indexStatus: 0
     workTreeStatus: 5
@@ -347,19 +266,12 @@ MonoBehaviour:
       2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\db\db235c74d80a9856d4722a5a8b50d08f
     projectPath: Library\Artifacts\db\db235c74d80a9856d4722a5a8b50d08f
     originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Falsification Maze\Library\Artifacts\e3\e3058e6a2d628eb77dcbcb108c3100e7
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: Falsification Maze\Library\Artifacts\e7\e7351666e3134c94336c0975d437170d
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\e3\e3058e6a2d628eb77dcbcb108c3100e7
-    projectPath: Library\Artifacts\e3\e3058e6a2d628eb77dcbcb108c3100e7
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Falsification Maze\Library\Artifacts\e5\e59f2f92d7a31c631780bc2af40b1f4f
-    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\e5\e59f2f92d7a31c631780bc2af40b1f4f
-    projectPath: Library\Artifacts\e5\e59f2f92d7a31c631780bc2af40b1f4f
+      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\e7\e7351666e3134c94336c0975d437170d
+    projectPath: Library\Artifacts\e7\e7351666e3134c94336c0975d437170d
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
@@ -368,26 +280,12 @@ MonoBehaviour:
       2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\ea\ea4c926c995cf3707fd6c4d6aa18c426
     projectPath: Library\Artifacts\ea\ea4c926c995cf3707fd6c4d6aa18c426
     originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Falsification Maze\Library\Artifacts\ef\efbe45083bb1457fa18ffb30a6bf2bfb
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: Falsification Maze\Library\Artifacts\ea\eae631122b7160d0ae52ddfcdff9e672
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\ef\efbe45083bb1457fa18ffb30a6bf2bfb
-    projectPath: Library\Artifacts\ef\efbe45083bb1457fa18ffb30a6bf2bfb
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Falsification Maze\Library\Artifacts\f2\f2b18e09401bf9fccad30625156fc4b1
-    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\f2\f2b18e09401bf9fccad30625156fc4b1
-    projectPath: Library\Artifacts\f2\f2b18e09401bf9fccad30625156fc4b1
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Falsification Maze\Library\Artifacts\f4\f45ef7583b71b0a9ccc8bc24f3b5cea1
-    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\f4\f45ef7583b71b0a9ccc8bc24f3b5cea1
-    projectPath: Library\Artifacts\f4\f45ef7583b71b0a9ccc8bc24f3b5cea1
+      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\ea\eae631122b7160d0ae52ddfcdff9e672
+    projectPath: Library\Artifacts\ea\eae631122b7160d0ae52ddfcdff9e672
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
@@ -396,29 +294,29 @@ MonoBehaviour:
       2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\f5\f58b893b8b4dc4991f3c59866fd151c8
     projectPath: Library\Artifacts\f5\f58b893b8b4dc4991f3c59866fd151c8
     originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
+    indexStatus: 0
+    workTreeStatus: 5
   - path: Falsification Maze\Library\Artifacts\f7\f7bb405b2d493154c8e66a38c3b81df1
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
       2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\f7\f7bb405b2d493154c8e66a38c3b81df1
     projectPath: Library\Artifacts\f7\f7bb405b2d493154c8e66a38c3b81df1
     originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Falsification Maze\Library\Artifacts\fb\fb175148a92928d3f91176cd9f26afae
-    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\fb\fb175148a92928d3f91176cd9f26afae
-    projectPath: Library\Artifacts\fb\fb175148a92928d3f91176cd9f26afae
-    originalPath: 
     indexStatus: 0
     workTreeStatus: 5
+  - path: Falsification Maze\Library\Artifacts\f9\f95fb0d1907e803f8f6f5196386fbcc1
+    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
+      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\f9\f95fb0d1907e803f8f6f5196386fbcc1
+    projectPath: Library\Artifacts\f9\f95fb0d1907e803f8f6f5196386fbcc1
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
   - path: Falsification Maze\Library\Artifacts\ff\ffd5d8f2148487ba2e189ef7f9a6e057
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
       2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\Artifacts\ff\ffd5d8f2148487ba2e189ef7f9a6e057
     projectPath: Library\Artifacts\ff\ffd5d8f2148487ba2e189ef7f9a6e057
     originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
+    indexStatus: 0
+    workTreeStatus: 5
   - path: Falsification Maze\Library\EditorInstance.json
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
       2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\EditorInstance.json
@@ -482,31 +380,10 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: Falsification Maze\Library\StateCache\Hierarchy\e5fb03-19d77118463b80143a.json
-    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\StateCache\Hierarchy\e5fb03-19d77118463b80143a.json
-    projectPath: Library\StateCache\Hierarchy\e5fb03-19d77118463b80143a.json
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
   - path: Falsification Maze\Library\StateCache\Hierarchy\e5fb03-mainStage.json
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
       2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\StateCache\Hierarchy\e5fb03-mainStage.json
     projectPath: Library\StateCache\Hierarchy\e5fb03-mainStage.json
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: Falsification Maze\Library\StateCache\SceneView\491d26-19d77118463b80143a.json
-    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\StateCache\SceneView\491d26-19d77118463b80143a.json
-    projectPath: Library\StateCache\SceneView\491d26-19d77118463b80143a.json
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Falsification Maze\Library\StateCache\SceneView\491d26-2a571ace6952b154ca.json
-    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Library\StateCache\SceneView\491d26-2a571ace6952b154ca.json
-    projectPath: Library\StateCache\SceneView\491d26-2a571ace6952b154ca.json
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
@@ -538,73 +415,94 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Falsification Maze\Temp\UnityTempFile-3eb4b6f10919de84bac9e8783487486f
+  - path: Falsification Maze\Temp\UnityTempFile-056bb81d85a0d9a48b00cbd54873a819
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Temp\UnityTempFile-3eb4b6f10919de84bac9e8783487486f
-    projectPath: Temp\UnityTempFile-3eb4b6f10919de84bac9e8783487486f
+      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Temp\UnityTempFile-056bb81d85a0d9a48b00cbd54873a819
+    projectPath: Temp\UnityTempFile-056bb81d85a0d9a48b00cbd54873a819
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Falsification Maze\Temp\UnityTempFile-42e69655e49af9244bcf5b314d8a627d
+  - path: Falsification Maze\Temp\UnityTempFile-0edac673e50f7274a98e335424aaa369
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Temp\UnityTempFile-42e69655e49af9244bcf5b314d8a627d
-    projectPath: Temp\UnityTempFile-42e69655e49af9244bcf5b314d8a627d
+      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Temp\UnityTempFile-0edac673e50f7274a98e335424aaa369
+    projectPath: Temp\UnityTempFile-0edac673e50f7274a98e335424aaa369
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Falsification Maze\Temp\UnityTempFile-55611797ca6695a4d9d16f5492924f9c
+  - path: Falsification Maze\Temp\UnityTempFile-12e194f3dc4ba7d4987e865870b3753d
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Temp\UnityTempFile-55611797ca6695a4d9d16f5492924f9c
-    projectPath: Temp\UnityTempFile-55611797ca6695a4d9d16f5492924f9c
+      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Temp\UnityTempFile-12e194f3dc4ba7d4987e865870b3753d
+    projectPath: Temp\UnityTempFile-12e194f3dc4ba7d4987e865870b3753d
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Falsification Maze\Temp\UnityTempFile-65b45078502dbca4f906a122dd57695b
+  - path: Falsification Maze\Temp\UnityTempFile-4f90343cfec719c44970205d04dc1107
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Temp\UnityTempFile-65b45078502dbca4f906a122dd57695b
-    projectPath: Temp\UnityTempFile-65b45078502dbca4f906a122dd57695b
+      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Temp\UnityTempFile-4f90343cfec719c44970205d04dc1107
+    projectPath: Temp\UnityTempFile-4f90343cfec719c44970205d04dc1107
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Falsification Maze\Temp\UnityTempFile-8ed8468a844db3c439ddefa679cd55a2
+  - path: Falsification Maze\Temp\UnityTempFile-60bd02476834cf048a81ff41e5171e0d
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Temp\UnityTempFile-8ed8468a844db3c439ddefa679cd55a2
-    projectPath: Temp\UnityTempFile-8ed8468a844db3c439ddefa679cd55a2
+      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Temp\UnityTempFile-60bd02476834cf048a81ff41e5171e0d
+    projectPath: Temp\UnityTempFile-60bd02476834cf048a81ff41e5171e0d
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Falsification Maze\Temp\UnityTempFile-c2cab996d4441a648aaff258f2fe6903
+  - path: Falsification Maze\Temp\UnityTempFile-66721b701001dad4a8c94f220288d1ae
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Temp\UnityTempFile-c2cab996d4441a648aaff258f2fe6903
-    projectPath: Temp\UnityTempFile-c2cab996d4441a648aaff258f2fe6903
+      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Temp\UnityTempFile-66721b701001dad4a8c94f220288d1ae
+    projectPath: Temp\UnityTempFile-66721b701001dad4a8c94f220288d1ae
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Falsification Maze\Temp\UnityTempFile-cba9d9f555bb5ef4a801686d3c9dd9f7
+  - path: Falsification Maze\Temp\UnityTempFile-668a7bb5ad2174142b612ec0a8c6ef25
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Temp\UnityTempFile-cba9d9f555bb5ef4a801686d3c9dd9f7
-    projectPath: Temp\UnityTempFile-cba9d9f555bb5ef4a801686d3c9dd9f7
+      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Temp\UnityTempFile-668a7bb5ad2174142b612ec0a8c6ef25
+    projectPath: Temp\UnityTempFile-668a7bb5ad2174142b612ec0a8c6ef25
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Falsification Maze\Temp\UnityTempFile-d2457c66a4f4d2d489064101d4032889
+  - path: Falsification Maze\Temp\UnityTempFile-6986bd15f431f384db77840164b00af3
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Temp\UnityTempFile-d2457c66a4f4d2d489064101d4032889
-    projectPath: Temp\UnityTempFile-d2457c66a4f4d2d489064101d4032889
+      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Temp\UnityTempFile-6986bd15f431f384db77840164b00af3
+    projectPath: Temp\UnityTempFile-6986bd15f431f384db77840164b00af3
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Falsification Maze\Temp\UnityTempFile-e6d656d136d59ff48b439772688177d5
+  - path: Falsification Maze\Temp\UnityTempFile-746f502bd0330e641adb5772ce9f8d33
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Temp\UnityTempFile-e6d656d136d59ff48b439772688177d5
-    projectPath: Temp\UnityTempFile-e6d656d136d59ff48b439772688177d5
+      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Temp\UnityTempFile-746f502bd0330e641adb5772ce9f8d33
+    projectPath: Temp\UnityTempFile-746f502bd0330e641adb5772ce9f8d33
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: Falsification Maze\Temp\UnityTempFile-f3aecf1c5d0071e4695f8adf120464c0
+  - path: Falsification Maze\Temp\UnityTempFile-ab7c206565637f844bf1c7860b4d442b
     fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
-      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Temp\UnityTempFile-f3aecf1c5d0071e4695f8adf120464c0
-    projectPath: Temp\UnityTempFile-f3aecf1c5d0071e4695f8adf120464c0
+      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Temp\UnityTempFile-ab7c206565637f844bf1c7860b4d442b
+    projectPath: Temp\UnityTempFile-ab7c206565637f844bf1c7860b4d442b
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Falsification Maze\Temp\UnityTempFile-cdf2b3c752af9684a8ea593f84f5b4a9
+    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
+      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Temp\UnityTempFile-cdf2b3c752af9684a8ea593f84f5b4a9
+    projectPath: Temp\UnityTempFile-cdf2b3c752af9684a8ea593f84f5b4a9
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Falsification Maze\Temp\UnityTempFile-d24b0f2dc6b395945a6f8a4e3296a2ba
+    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
+      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Temp\UnityTempFile-d24b0f2dc6b395945a6f8a4e3296a2ba
+    projectPath: Temp\UnityTempFile-d24b0f2dc6b395945a6f8a4e3296a2ba
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: Falsification Maze\Temp\UnityTempFile-dfc1238e0425c9248b41f51dc5670d52
+    fullPath: C:\Users\Tomsw\OneDrive\Documents\Universiteit\Master\Jaar 2\Semester
+      2\New Media Lab\Maze Game\Falsification-Maze\Falsification Maze\Temp\UnityTempFile-dfc1238e0425c9248b41f51dc5670d52
+    projectPath: Temp\UnityTempFile-dfc1238e0425c9248b41f51dc5670d52
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1

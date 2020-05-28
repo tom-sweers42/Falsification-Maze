@@ -59,10 +59,10 @@ public class MazeLoader : MonoBehaviour {
         if (!correctPath) {
             MazeCell newFinish = null;
             (newFinish, checkCell) = ma.findWrongFinish(initPathLength);
+            ma.addShortestPaths(materialPath,0,0, newFinish.r, newFinish.c);
             for (int i = 0; i <= 5; i++) {
                 checkCell = checkCell.next;
             }
-            ma.addShortestPaths(materialPath,0,0, newFinish.r, newFinish.c);
         }
 	}
 

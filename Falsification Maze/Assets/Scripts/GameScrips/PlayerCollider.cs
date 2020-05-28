@@ -22,7 +22,23 @@ public class PlayerCollider : MonoBehaviour
     //{
 
     //}
+    void Update() {
+        Transform transform = GetComponent<Transform>();
+        (int r, int c) = getCoordinates(transform);
+        gameManager.ClearPath();
+        // Debug.Log(gameManager.mazeCells[r, c].hasMoreThanOneOpening(gameManager.mazeCells));
+        int currPathLength = gameManager.mazeCells[r, c].drawRoute(materialPath, 0);
+        gameManager.tilesCounterField.text = currPathLength.ToString();
+        if (gameManager.checkCell != null && r == gameManager.checkCell.r && c == gameManager.checkCell.c) {
+            Debug.Log("Wrong Path!!!");
+        }
+    }
 
+    (int, int) getCoordinates(Transform transform) {
+        int c = (int) ((transform.position.z + gameManager.size/2)/gameManager.size);
+        int r = (int) ((transform.position.x + gameManager.size/2)/gameManager.size);
+        return (r,c);
+    }
     void OnTriggerEnter(Collider other) {
         if (other.gameObject.name == "END")
         {
@@ -36,13 +52,10 @@ public class PlayerCollider : MonoBehaviour
             string pair = curFloor.name.Split(' ')[1];
             int r = Int32.Parse(pair.Split(',')[0]);
             int c = Int32.Parse(pair.Split(',')[1]);
-            if (gameManager.checkCell != null && r == gameManager.checkCell.r && c == gameManager.checkCell.c) {
-                Debug.Log("Wrong Path!!!");
-            }
-            gameManager.ClearPath();
-            // Debug.Log(gameManager.mazeCells[r, c].hasMoreThanOneOpening(gameManager.mazeCells));
-            int currPathLength = gameManager.mazeCells[r, c].drawRoute(materialPath, 0);
-            gameManager.tilesCounterField.text = currPathLength.ToString();
+            // gameManager.ClearPath();
+            // // Debug.Log(gameManager.mazeCells[r, c].hasMoreThanOneOpening(gameManager.mazeCells));
+            // int currPathLength = gameManager.mazeCells[r, c].drawRoute(materialPath, 0);
+            // gameManager.tilesCounterField.text = currPathLength.ToString();
 
         }
 
