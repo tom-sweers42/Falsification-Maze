@@ -36,11 +36,15 @@ public class PlayerCollider : MonoBehaviour
             string pair = curFloor.name.Split(' ')[1];
             int r = Int32.Parse(pair.Split(',')[0]);
             int c = Int32.Parse(pair.Split(',')[1]);
+            if (gameManager.checkCell != null && r == gameManager.checkCell.r && c == gameManager.checkCell.c) {
+                Debug.Log("Wrong Path!!!");
+            }
             gameManager.ClearPath();
             // Debug.Log(gameManager.mazeCells[r, c].hasMoreThanOneOpening(gameManager.mazeCells));
             int currPathLength = gameManager.mazeCells[r, c].drawRoute(materialPath, 0);
             gameManager.tilesCounterField.text = currPathLength.ToString();
 
         }
+
     }
 }

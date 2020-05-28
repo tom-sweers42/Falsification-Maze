@@ -15,7 +15,7 @@ public abstract class MazeAlgorithm {
 
 	public abstract void CreateMaze ();
 
-    public MazeCell findWrongFinish(int pathLength){
+    public (MazeCell, MazeCell) findWrongFinish(int pathLength){
         MazeCell next = mazeCells[0,0];
         MazeCell greenPathFinishCell = null;
 
@@ -39,7 +39,8 @@ public abstract class MazeAlgorithm {
             Debug.Log("end cell: "+ path.r + ", " + path.c);
             greenPathFinishCell = path;
         }
-        return greenPathFinishCell;
+        Debug.Log("wrong cell: " + next.r + ", " + next.c);
+        return (greenPathFinishCell, next);
     }
     public int addShortestPaths(Material materialPath, int r, int c, int fr, int fc) {
 
@@ -74,7 +75,7 @@ public abstract class MazeAlgorithm {
         if (cell.kids.Count > 0) {
             foreach (MazeCell kid in cell.kids) {
                 (int pathLength, MazeCell deepCell) = longestPath(kid);
-                if (pathLength > maxPathLength) {
+                if (pathLength >= maxPathLength) {
                     maxPathLength = pathLength;
                     maxDeepCell = deepCell;
                 }

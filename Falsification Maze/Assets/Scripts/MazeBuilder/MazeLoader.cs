@@ -10,8 +10,11 @@ public class MazeLoader : MonoBehaviour {
     public int randomDeletesDivider;
 	public int randomAdditionsDivider;
 	public GameObject wall;
+
+    public GameObject roof;
     public GameObject dotWall;
 	public float size = 2f;
+    public float heigth = 2f;
     public float timeLimit;
     private float timeLeft;
     private float initialIntensity;
@@ -36,6 +39,7 @@ public class MazeLoader : MonoBehaviour {
     public GameObject tilesCounterFieldObject;
     public Text tilesCounterField;
 
+    public MazeCell checkCell;
 	public int initPathLength;
     private int cellPathLength;
 
@@ -53,7 +57,11 @@ public class MazeLoader : MonoBehaviour {
         initPathLength = ma.addShortestPaths(materialPath, 0, 0, mazeRows-1, mazeColumns -1);
         AddPathBasedColor();
         if (!correctPath) {
-            MazeCell newFinish = ma.findWrongFinish(initPathLength);
+            MazeCell newFinish = null;
+            (newFinish, checkCell) = ma.findWrongFinish(initPathLength);
+            for (int i = 0; i <= 5; i++) {
+                checkCell = checkCell.next;
+            }
             ma.addShortestPaths(materialPath,0,0, newFinish.r, newFinish.c);
         }
 	}
@@ -342,13 +350,12 @@ public class MazeLoader : MonoBehaviour {
 		for (int r = 0; r < mazeRows; r++) {
 			for (int c = 0; c < mazeColumns; c++) {
                 mazeCells [r, c] = new MazeCell (c,r);
-
 				// For now, use the same wall object for the floor!
-				mazeCells [r, c] .floor = Instantiate (wall, new Vector3 (r*size, -(size/2f), c*size), Quaternion.identity) as GameObject;
+				mazeCells [r, c] .floor = Instantiate (roof, new Vector3 (r*size, -(heigth/2f), c*size), Quaternion.identity) as GameObject;
 				mazeCells [r, c] .floor.name = "Floor " + r + "," + c;
 				mazeCells [r, c] .floor.transform.Rotate (Vector3.right, 90f);
 
-				mazeCells [r, c] .roof = Instantiate (wall, new Vector3 (r*size, (size/2f), c*size), Quaternion.identity) as GameObject;
+				mazeCells [r, c] .roof = Instantiate (roof, new Vector3 (r*size, (heigth/2f), c*size), Quaternion.identity) as GameObject;
 				mazeCells [r, c] .roof.name = "Roof " + r + "," + c;
 				mazeCells [r, c] .roof.transform.Rotate (Vector3.right, 90f);
 
