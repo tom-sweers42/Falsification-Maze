@@ -49,9 +49,7 @@ public class PlayerCollider : MonoBehaviour
         (int r, int c) = getCoordinates(transform);
         // Debug.Log(gameManager.mazeCells[r, c].hasMoreThanOneOpening(gameManager.mazeCells));
         if (r == gameManager.mazeRows - 1 && c == gameManager.mazeColumns-1) {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            SceneManager.LoadScene("Menu");
+            gameManager.gameWon();
         }
         if (!gameManager.correctPath) {
             if (!folllowedGreenPath && gameManager.checkCell != null && r == gameManager.checkCell.r && c == gameManager.checkCell.c) {

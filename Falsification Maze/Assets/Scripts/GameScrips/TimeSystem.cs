@@ -7,10 +7,12 @@ using UnityEngine.SceneManagement;
 public class TimeSystem : MonoBehaviour
 {
     public TMP_Text timeText;
+    public TMP_Text levelText;
+    public GameObject timeOver;
     private float start = 0;
     private float diff;
-    private float maxTime = 300; //seconds
-    private bool timeStarted = false;
+    public float maxTime = 5; //seconds
+    private bool noTime = false;
 
     // Update is called once per frame
     void Update()
@@ -21,7 +23,16 @@ public class TimeSystem : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            Time.timeScale = 0f;
+            timeOver.SetActive(true);
+            levelText.text = "LEVEL " + CrossSceneInformationClass.level;
+            noTime = true;
+        }
+        if (noTime & (Input.GetKeyDown(KeyCode.Space)))
+        {
+            noTime = false;
             SceneManager.LoadScene("Menu");
+            CrossSceneInformationClass.level = 0;
         }
         string minutes = Mathf.Floor(diff / 60).ToString("00");
         string seconds = (diff%60).ToString("00");

@@ -9,12 +9,8 @@ public class MainMenu : MonoBehaviour
     {
         CrossSceneInformationClass.level += 1;
         Cursor.visible = false;
-        if (CrossSceneInformationClass.level < 5) {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + CrossSceneInformationClass.level);
-        }
-        else {
-            QuitGame();
-        }
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + CrossSceneInformationClass.level);
     }
 
     public void QuitGame()

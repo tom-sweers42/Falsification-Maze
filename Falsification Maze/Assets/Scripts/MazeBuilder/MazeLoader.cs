@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class MazeLoader : MonoBehaviour {
@@ -29,9 +30,6 @@ public class MazeLoader : MonoBehaviour {
 	public Material materialMarkerCorrect;
     public int threshold = 5;
 
-    public Material[] symbols = new Material[4];
-	public String[] symbolNames = new String[4];
-
     public Material materialNormal;
     public GameObject player;
     public new GameObject light;
@@ -45,6 +43,10 @@ public class MazeLoader : MonoBehaviour {
 	public int initPathLength;
     private int cellPathLength;
 
+    public GameObject levelComplete;
+    public TMP_Text levelText; 
+    private bool finished = false;
+
     // Use this for initialization
     void Start () {
         timeLeft = timeLimit;
@@ -55,7 +57,6 @@ public class MazeLoader : MonoBehaviour {
 		MazeAlgorithm ma = new HuntAndKillMazeAlgorithm (mazeCells);
 		ma.CreateMaze ();
 		// DeleteRandomWalls();
-        // AddRandomSymbols();
         initPathLength = ma.addShortestPaths(materialPath, 0, 0, mazeRows-1, mazeColumns -1);
         copyMazeCells = mazeCells.Clone() as MazeCell[,];
         AddPathBasedColor();
@@ -81,30 +82,21 @@ public class MazeLoader : MonoBehaviour {
         timeLeft -= Time.deltaTime;
         Light lightComponent = light.GetComponent<Light>();
         lightComponent.intensity = initialIntensity * (timeLeft/timeLimit);
-	}
 
-	public void AddRandomSymbols()
-	{
-		int randomAdditions = Convert.ToInt32((mazeColumns*mazeRows)/randomAdditionsDivider);
-		for (int i =0; i < randomAdditions; i++) {
-            int r = UnityEngine.Random.Range(0, mazeRows-1);
-            int c = UnityEngine.Random.Range(0, mazeColumns-1);
-			int direction = UnityEngine.Random.Range(0,2);
-			int symbol = UnityEngine.Random.Range(0,4);
-
-			if (direction == 0)
-			{
-				MeshRenderer meshRenderer = mazeCells[r, c].southWall.GetComponent<MeshRenderer>();
-				meshRenderer.material = symbols[symbol];
-				//mazeCells[r, c].floor.name = symbolNames[symbol];
-			}
-			else
-			{
-				MeshRenderer meshRenderer = mazeCells[r, c].eastWall.GetComponent<MeshRenderer>();
-				meshRenderer.material = symbols[symbol];
-				//mazeCells[r, c].floor.name = symbolNames[symbol];
-			}
-		}
+        if (finished & (Input.GetKeyDown(KeyCode.Space)))
+        {
+            CrossSceneInformationClass.level += 1;
+            Debug.Log(CrossSceneInformationClass.level);
+            if (CrossSceneInformationClass.level < 5) 
+            {
+                Time.timeScale = 1f;
+                SceneManager.LoadScene(CrossSceneInformationClass.level);
+            }
+            else
+            {
+                Application.Quit();
+            }
+        }
 	}
 
     void AddPathBasedColor()
@@ -219,6 +211,14 @@ public class MazeLoader : MonoBehaviour {
         Texture2D texture = new Texture2D(128, 128);
         cell.roof.GetComponent<Renderer>().material.mainTexture = texture;
 
+    }
+
+    public void gameWon()
+    {
+        levelComplete.SetActive(true);
+        levelText.text = "LEVEL " + CrossSceneInformationClass.level;
+        Time.timeScale = 0f;
+        finished = true;
     }
 
     public Color colourDirDot(int pathLength, int newPathLength) {
