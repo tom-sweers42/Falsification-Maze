@@ -18,7 +18,13 @@ public class MazeCell {
         this.r = r;
         kids = new List<MazeCell>();
     }
-
+    public MazeCell DeepCopy()
+    {
+        MazeCell other = (MazeCell) this.MemberwiseClone();
+        other.kids = new List<MazeCell>();
+        other.next = null;
+        return other;
+    }
     public int drawRoute(Material materialPath, int counter) {
         MeshRenderer meshRenderer = this.floor.GetComponent<MeshRenderer>();
         meshRenderer.material = materialPath;
@@ -54,6 +60,37 @@ public class MazeCell {
             counter++;
         }
         if (c > 0 && !mazeCells[r,c-1].eastWall.activeSelf)
+        {
+            counter++;
+
+        }
+        // Debug.Log(counter);
+        return counter>2;
+    }
+    public bool hasMoreThanOneOpeningNullVersion(MazeCell[,] mazeCells ) {
+        int counter = 0;
+        if (southWall == null)
+        {
+            counter++;
+        }
+        if (eastWall == null)
+        {
+            counter++;
+        }
+        if (r == 0){
+            if (northWall == null) {
+                counter++;
+            }
+        }
+        if (c == 0) {
+            if (westWall == null) {
+                counter++;
+            }
+        }
+        if (r > 0 && mazeCells[r-1,c].southWall == null) {
+            counter++;
+        }
+        if (c > 0 && mazeCells[r,c-1].eastWall == null)
         {
             counter++;
 

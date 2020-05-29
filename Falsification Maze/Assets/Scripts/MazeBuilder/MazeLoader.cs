@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using TMPro;
 
 public class MazeLoader : MonoBehaviour {
 	public int mazeRows, mazeColumns;
@@ -36,9 +37,10 @@ public class MazeLoader : MonoBehaviour {
     public new GameObject light;
 
 	public MazeCell[,] mazeCells;
+    public MazeCell[,] copyMazeCells;
     public GameObject tilesCounterFieldObject;
     public Text tilesCounterField;
-
+    public TMP_Text fm;
     public MazeCell checkCell;
 	public int initPathLength;
     private int cellPathLength;
@@ -53,13 +55,21 @@ public class MazeLoader : MonoBehaviour {
 		MazeAlgorithm ma = new HuntAndKillMazeAlgorithm (mazeCells);
 		ma.CreateMaze ();
 		// DeleteRandomWalls();
-        AddRandomSymbols();
+        // AddRandomSymbols();
         initPathLength = ma.addShortestPaths(materialPath, 0, 0, mazeRows-1, mazeColumns -1);
+        copyMazeCells = mazeCells.Clone() as MazeCell[,];
         AddPathBasedColor();
         if (!correctPath) {
             MazeCell newFinish = null;
             (newFinish, checkCell) = ma.findWrongFinish(initPathLength);
+            for (int r = 0; r < mazeRows; r++) {
+                for (int c = 0; c < mazeColumns; c++) {
+                    mazeCells[r,c] = mazeCells[r,c].DeepCopy();
+                }
+            }
+            Debug.Log(newFinish.r + ", " + newFinish.c);
             ma.addShortestPaths(materialPath,0,0, newFinish.r, newFinish.c);
+            checkCell = mazeCells[checkCell.r, checkCell.c];
             for (int i = 0; i <= 5; i++) {
                 checkCell = checkCell.next;
             }
@@ -217,7 +227,7 @@ public class MazeLoader : MonoBehaviour {
             return Color.green;
         }
         else if (diff == -1) {
-            return Color.white;
+            return Color.blue;
         }
         else {
             return Color.blue;
@@ -338,7 +348,9 @@ public class MazeLoader : MonoBehaviour {
 			for (int c = 0; c < mazeColumns; c++) {
 				if(c != mazeColumns -1 || r != mazeRows - 1) {
 					MeshRenderer meshRenderer = mazeCells[r, c].floor.GetComponent<MeshRenderer>();
+					MeshRenderer meshRendererCopy = copyMazeCells[r, c].floor.GetComponent<MeshRenderer>();
 					meshRenderer.material = materialNormal;
+					meshRendererCopy.material = materialNormal;
                 }
             }
         }

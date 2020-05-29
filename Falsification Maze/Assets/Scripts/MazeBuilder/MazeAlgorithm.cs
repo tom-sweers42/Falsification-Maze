@@ -79,6 +79,7 @@ public abstract class MazeAlgorithm {
                     maxPathLength = pathLength;
                     maxDeepCell = deepCell;
                 }
+
                     // Debug.Log("max cell: " + maxDeepCell.r + ", " + maxDeepCell.c);
                     // Debug.Log("cell: " + cell.r + ", " + cell.c);
             }

@@ -1814,12 +1814,12 @@ PrefabInstance:
     - target: {fileID: 4194800998294751530, guid: 0393e88e96b3c334b874ed4ac44fb3ab,
         type: 3}
       propertyPath: mazeColumns
-      value: 12
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4194800998294751530, guid: 0393e88e96b3c334b874ed4ac44fb3ab,
         type: 3}
       propertyPath: mazeRows
-      value: 12
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4194800998294751530, guid: 0393e88e96b3c334b874ed4ac44fb3ab,
         type: 3}
@@ -1906,6 +1906,26 @@ PrefabInstance:
         type: 3}
       propertyPath: correctPath
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194800998294751530, guid: 0393e88e96b3c334b874ed4ac44fb3ab,
+        type: 3}
+      propertyPath: wall
+      value: 
+      objectReference: {fileID: 101274, guid: 19d77118463b80143a1a623c8e761322, type: 3}
+    - target: {fileID: 4194800998294751530, guid: 0393e88e96b3c334b874ed4ac44fb3ab,
+        type: 3}
+      propertyPath: roof
+      value: 
+      objectReference: {fileID: 101274, guid: 2a571ace6952b154ca2ff06b0540f264, type: 3}
+    - target: {fileID: 4194800998294751530, guid: 0393e88e96b3c334b874ed4ac44fb3ab,
+        type: 3}
+      propertyPath: size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194800998294751530, guid: 0393e88e96b3c334b874ed4ac44fb3ab,
+        type: 3}
+      propertyPath: heigth
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4194800998294751531, guid: 0393e88e96b3c334b874ed4ac44fb3ab,
         type: 3}
