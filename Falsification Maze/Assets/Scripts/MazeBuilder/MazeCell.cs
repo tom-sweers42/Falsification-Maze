@@ -4,14 +4,19 @@ using System.Collections.Generic;
 using System;
 
 public class MazeCell {
+
+    //Gameobjects
+	public GameObject northWall, southWall, eastWall, westWall, floor, roof;
+
+    // Mazeinfo
     public int c,r;
+
+    // Path
 	public bool visited = false;
     public bool discovered = false;
     public List<MazeCell> path;
     public MazeCell next;
-
     public List<MazeCell> kids;
-	public GameObject northWall, southWall, eastWall, westWall, floor, roof;
 
     public MazeCell(int c, int r){
         this.c = c;
@@ -64,7 +69,6 @@ public class MazeCell {
             counter++;
 
         }
-        // Debug.Log(counter);
         return counter>2;
     }
     public bool hasMoreThanOneOpeningNullVersion(MazeCell[,] mazeCells ) {
@@ -95,30 +99,6 @@ public class MazeCell {
             counter++;
 
         }
-        // Debug.Log(counter);
         return counter>2;
-    }
-    public void showDirection(){
-        if (next != null) {
-            int rDir = next.r - r;
-            int cDir = next.c - c;
-
-            if (rDir == 0 && cDir == -1) {
-                //north
-                Debug.Log("NORTH");
-            }
-            if (rDir == 0 && cDir == 1) {
-                //south
-                Debug.Log("SOUTH");
-            }
-            if (rDir == -1 && cDir == 0) {
-                //west
-                Debug.Log("WEST");
-            }
-            if (rDir == 1 && cDir == 0) {
-                //east
-                Debug.Log("EAST");
-            }
-        }
     }
 }

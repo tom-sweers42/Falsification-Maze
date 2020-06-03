@@ -8,52 +8,62 @@ using UnityEngine.SceneManagement;
 using TMPro;
 
 public class MazeLoader : MonoBehaviour {
+
+    // Maze intstantiators
 	public int mazeRows, mazeColumns;
     public int randomDeletesDivider;
 	public int randomAdditionsDivider;
+	public MazeCell[,] mazeCells;
+    public MazeCell[,] copyMazeCells;
+	public float size = 2f;
+    public float heigth = 2f;
+
+    // Correctness of green path
+    public bool correctPath;
+
+    // Maze Gameobjects
 	public GameObject wall;
 
     public GameObject roof;
     public GameObject dotWall;
-	public float size = 2f;
-    public float heigth = 2f;
-    public float timeLimit;
-    private float timeLeft;
-    private float initialIntensity;
 
-    public bool correctPath;
+    // Maze Materials
+
 	public Material materialFinish;
 	public Material materialPath;
-
 	public Material materialMarkerFar;
 	public Material materialMarkerNear;
 	public Material materialMarkerCorrect;
-    public int threshold = 5;
 
     public Material materialNormal;
-    public GameObject player;
-    public new GameObject light;
 
-	public MazeCell[,] mazeCells;
-    public MazeCell[,] copyMazeCells;
-    public GameObject tilesCounterFieldObject;
-    public Text tilesCounterField;
+    // Finishing
+    private bool finished = false;
+    public GameObject levelComplete;
+    public GameObject timeOver;
+
+    // FM
+
     public TMP_Text fm;
     public MazeCell checkCell;
 	public int initPathLength;
-    private int cellPathLength;
 
-    public GameObject levelComplete;
-    public TMP_Text levelText; 
-    private bool finished = false;
+    // Data Collection
+    public GameObject data;
 
-    // Use this for initialization
+    //Timing
+    public GameObject timeSystem;
+    public TMP_Text timeText;
+    public TMP_Text levelText;
+    private float start = 0;
+    private float diff;
+    public float maxTime = 5; //seconds
+    private bool noTime = false;
+
+
     void Start () {
-        timeLeft = timeLimit;
-        Light lightComponent = light.GetComponent<Light>();
-        initialIntensity = lightComponent.intensity;
+        data = GameObject.Find("Data");
 		InitializeMaze ();
-        tilesCounterField = tilesCounterFieldObject.GetComponent<Text>();
 		MazeAlgorithm ma = new HuntAndKillMazeAlgorithm (mazeCells);
 		ma.CreateMaze ();
 		// DeleteRandomWalls();
@@ -79,15 +89,44 @@ public class MazeLoader : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        timeLeft -= Time.deltaTime;
-        Light lightComponent = light.GetComponent<Light>();
-        lightComponent.intensity = initialIntensity * (timeLeft/timeLimit);
+        if (!finished && !noTime){
 
+            start += Time.deltaTime;
+            diff = maxTime - start;
+            if (diff <= 0 && !noTime)
+            {
+                UnityEngine.Cursor.lockState = CursorLockMode.None;
+                UnityEngine.Cursor.visible = true;
+                Time.timeScale = 0f;
+                timeOver.SetActive(true);
+                levelText.text = "LEVEL " + CrossSceneInformationClass.level;
+                noTime = true;
+            }
+            string minutes = Mathf.Floor(diff / 60).ToString("00");
+            string seconds = (diff%60).ToString("00");
+            timeText.text = "TIME " + minutes + ":" + seconds;
+        }
+        if (noTime & (Input.GetKeyDown(KeyCode.Space)))
+        {
+            gameOver();
+            noTime = false;
+            CrossSceneInformationClass.level += 1;
+            Debug.Log(CrossSceneInformationClass.level);
+            if (CrossSceneInformationClass.level < 5)
+            {
+                Time.timeScale = 1f;
+                SceneManager.LoadScene(CrossSceneInformationClass.level);
+            }
+            else
+            {
+                Application.Quit();
+            }
+        }
         if (finished & (Input.GetKeyDown(KeyCode.Space)))
         {
             CrossSceneInformationClass.level += 1;
             Debug.Log(CrossSceneInformationClass.level);
-            if (CrossSceneInformationClass.level < 5) 
+            if (CrossSceneInformationClass.level < 5)
             {
                 Time.timeScale = 1f;
                 SceneManager.LoadScene(CrossSceneInformationClass.level);
@@ -107,19 +146,9 @@ public class MazeLoader : MonoBehaviour {
                 MazeCell cell = mazeCells[r,c];
                 if (cell.hasMoreThanOneOpening(mazeCells)) {
                     ColorCode(cell);
-                    // ColorObject(r,c, initPathLength, pathLength);
                 }
             }
         }
-
-        // int randomAdditions = Convert.ToInt32((mazeColumns * mazeRows) / randomAdditionsDivider);
-        // for (int i = 0; i < randomAdditions; i++)
-        // {
-        //     int r = UnityEngine.Random.Range(0, mazeRows - 1);
-        //     int c = UnityEngine.Random.Range(0, mazeColumns - 1);
-        //     cellPathLength = ma.addShortestPaths(materialPath, r, c, true);
-        //     ColorObject(r, c, initPathLength, cellPathLength);
-        // }
     }
     void ColorCode(MazeCell cell) {
         int maxLength = LongestPathLength(mazeCells[mazeRows-1, mazeColumns-1]);
@@ -215,12 +244,21 @@ public class MazeLoader : MonoBehaviour {
 
     public void gameWon()
     {
+        MazeData mazeData = data.GetComponent<MazeData>();
+        mazeData.timeLevels.Add(start);
         levelComplete.SetActive(true);
         levelText.text = "LEVEL " + CrossSceneInformationClass.level;
         Time.timeScale = 0f;
         finished = true;
+
     }
 
+    public void gameOver()
+    {
+        MazeData mazeData = data.GetComponent<MazeData>();
+        mazeData.timeLevels.Add(-1f);
+
+    }
     public Color colourDirDot(int pathLength, int newPathLength) {
         int diff = pathLength - newPathLength;
         if (diff == 1) {
@@ -246,72 +284,6 @@ public class MazeLoader : MonoBehaviour {
         else
             return 0;
         return maxPathLength;
-    }
-    void ColorObject(int r, int c, int initPathLength, int cellPathLength)
-    {
-        // int direction = UnityEngine.Random.Range(0, 3);
-        int direction = 2;
-        if (direction == 0)
-        {
-            MeshRenderer meshRenderer = mazeCells[r, c].southWall.GetComponent<MeshRenderer>();
-
-            if (initPathLength < cellPathLength && cellPathLength <= initPathLength + threshold)
-            {
-                meshRenderer.material = materialMarkerNear;
-            }
-            else if (initPathLength + threshold < cellPathLength)
-            {
-                meshRenderer.material = materialMarkerFar;
-
-            }
-            else if (cellPathLength <= initPathLength)
-            {
-                meshRenderer.material = materialMarkerCorrect;
-            }
-            else { }
-        }
-
-        else if (direction == 1)
-        {
-            MeshRenderer meshRenderer = mazeCells[r, c].eastWall.GetComponent<MeshRenderer>();
-
-            if (initPathLength < cellPathLength && cellPathLength <= initPathLength + threshold)
-            {
-                meshRenderer.material = materialMarkerNear;
-            }
-            else if (initPathLength + threshold < cellPathLength)
-            {
-                meshRenderer.material = materialMarkerFar;
-
-            }
-            else if (cellPathLength <= initPathLength)
-            {
-                meshRenderer.material = materialMarkerCorrect;
-            }
-            else { }
-
-        }
-
-        else
-        {
-            MeshRenderer meshRenderer = mazeCells[r, c].roof.GetComponent<MeshRenderer>();
-
-            if (initPathLength < cellPathLength && cellPathLength <= initPathLength + threshold)
-            {
-                meshRenderer.material = materialMarkerNear;
-            }
-            else if (initPathLength + threshold < cellPathLength)
-            {
-                meshRenderer.material = materialMarkerFar;
-
-            }
-            else if (cellPathLength <= initPathLength)
-            {
-                meshRenderer.material = materialMarkerCorrect;
-            }
-            else { }
-
-        }
     }
 
     public void DeleteRandomWalls() {
@@ -386,9 +358,6 @@ public class MazeLoader : MonoBehaviour {
 					mazeCells [r, c].northWall.transform.Rotate (Vector3.up * 90f);
 
 				}
-
-				// MeshRenderer meshRendererRight = mazeCells[r, c].northWall.GetComponent<MeshRenderer>();
-				// meshRendererRight.material = materialRight;
 
 				mazeCells[r,c].southWall = Instantiate (wall, new Vector3 ((r*size) + (size/2f), 0, c*size), Quaternion.identity) as GameObject;
 				mazeCells [r, c].southWall.name = "South Wall " + r + "," + c;

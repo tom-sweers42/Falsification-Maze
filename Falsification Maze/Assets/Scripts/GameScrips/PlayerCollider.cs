@@ -9,16 +9,18 @@ using TMPro;
 
 public class PlayerCollider : MonoBehaviour
 {
-    private GameObject curFloor;
-    private int pathFinishLength = 0;
+    // GameManager
     public MazeLoader gameManager;
-    public Material materialPath;
-    public Material materialRight;
-    public Material materialLeft;
+    // Path
+    private int pathFinishLength = 0;
+
+    // FM
     private bool folllowedGreenPath = false;
     private bool wrongTurn = false;
     private int wrongCounter = 0;
-
+    private MazeCell curCheckCell;
+    private float time = 0;
+    // FM Texts
     private String[] fmTexts = new String [] {
         "Did you notice the markings on the roof?",
         "Have you noticed the green dot on the roof?",
@@ -42,29 +44,18 @@ public class PlayerCollider : MonoBehaviour
         "Did you look at the floor?",
         "Did you look at the green tiles?"
     };
-    private MazeCell curCheckCell;
-    private float time = 0;
-    //// Start is called before the first frame update
-    //void Start()
-    //{
 
-    //}
+    // Finishing
+    private bool won = false;
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-
-    //}
     void Update() {
-
-        // start += Time.deltaTime;
-        // diff = maxTime - start;
 
         Transform transform = GetComponent<Transform>();
         (int r, int c) = getCoordinates(transform);
-        // Debug.Log(gameManager.mazeCells[r, c].hasMoreThanOneOpening(gameManager.mazeCells));
-        if (r == gameManager.mazeRows - 1 && c == gameManager.mazeColumns-1) {
+
+        if (r == gameManager.mazeRows - 1 && c == gameManager.mazeColumns-1 && !won) {
             gameManager.gameWon();
+            won = true;
         }
         if (!gameManager.correctPath) {
             if (!folllowedGreenPath && gameManager.checkCell != null && r == gameManager.checkCell.r && c == gameManager.checkCell.c) {
@@ -90,10 +81,6 @@ public class PlayerCollider : MonoBehaviour
                     }
 
                 }
-
-
-
-
             }
 
             if (folllowedGreenPath && curCheckCell != null && r == curCheckCell.r && c == curCheckCell.c) {
@@ -107,32 +94,15 @@ public class PlayerCollider : MonoBehaviour
                 }
             }
 
-            // if (pathFinishLength != 0 && gameManager.copyMazeCells[r,c].drawRoute(materialPath,0) > pathFinishLength ) {
-            //     Debug.Log("Wrong Path!!");
-            //     wrongCounter += 1;
-            //     if (gameManager.fm.text == "" && wrongCounter >= 5) {
-            //         System.Random random = new System.Random();
-            //         List<String> combinedList = fmTextsType1.Concat(fmTextsType2).ToList().Concat(fmTextsType3).ToList();
-            //         gameManager.fm.text = combinedList[random.Next(combinedList.Count)];
-            //         folllowedGreenPath = true;
-            //         time = 0;
-            //     }
-            // }
-            // if (pathFinishLength != 0 && gameManager.copyMazeCells[r,c].drawRoute(materialPath,0) < pathFinishLength ) {
-            //     Debug.Log("Correct Path!");
-            //     wrongCounter = 0;
-            // }
             if (folllowedGreenPath) {
                 time += Time.deltaTime;
                 if (time >= 5f) {
                     gameManager.fm.text = "";
                 }
             }
-            // Debug.Log(pathFinishLength);
-
         }
 
-        if (pathFinishLength != 0 && gameManager.copyMazeCells[r,c].drawRoute(materialPath,0) > pathFinishLength ) {
+        if (pathFinishLength != 0 && gameManager.copyMazeCells[r,c].drawRoute(gameManager.materialPath,0) > pathFinishLength ) {
             Debug.Log("Wrong Path!!");
             wrongCounter += 1;
             if (gameManager.fm.text == "" && wrongCounter >= 5) {
@@ -143,7 +113,7 @@ public class PlayerCollider : MonoBehaviour
                 time = 0;
             }
         }
-        if (pathFinishLength != 0 && gameManager.copyMazeCells[r,c].drawRoute(materialPath,0) < pathFinishLength ) {
+        if (pathFinishLength != 0 && gameManager.copyMazeCells[r,c].drawRoute(gameManager.materialPath,0) < pathFinishLength ) {
             Debug.Log("Correct Path!");
             wrongCounter = 0;
         }
@@ -154,10 +124,9 @@ public class PlayerCollider : MonoBehaviour
                 wrongTurn = false;
             }
         }
-        pathFinishLength = gameManager.copyMazeCells[r,c].drawRoute(materialPath,0);
+        pathFinishLength = gameManager.copyMazeCells[r,c].drawRoute(gameManager.materialPath,0);
         gameManager.ClearPath();
-        int currPathLength = gameManager.mazeCells[r, c].drawRoute(materialPath, 0);
-        gameManager.tilesCounterField.text = currPathLength.ToString();
+        int currPathLength = gameManager.mazeCells[r, c].drawRoute(gameManager.materialPath, 0);
     }
 
     (int, int) getCoordinates(Transform transform) {
@@ -165,19 +134,4 @@ public class PlayerCollider : MonoBehaviour
         int r = (int) ((transform.position.x + gameManager.size/2)/gameManager.size);
         return (r,c);
     }
-    // void OnTriggerEnter(Collider other) {
-
-    //     if (other.gameObject.name.StartsWith("Floor") && curFloor != other.gameObject) {
-    //         curFloor = other.gameObject;
-    //         string pair = curFloor.name.Split(' ')[1];
-    //         int r = Int32.Parse(pair.Split(',')[0]);
-    //         int c = Int32.Parse(pair.Split(',')[1]);
-    //         // gameManager.ClearPath();
-    //         // // Debug.Log(gameManager.mazeCells[r, c].hasMoreThanOneOpening(gameManager.mazeCells));
-    //         // int currPathLength = gameManager.mazeCells[r, c].drawRoute(materialPath, 0);
-    //         // gameManager.tilesCounterField.text = currPathLength.ToString();
-
-    //     }
-
-    // }
 }
