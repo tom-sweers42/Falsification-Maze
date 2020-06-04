@@ -4,10 +4,10 @@ ScriptsOnlyBuild:
     - FirstPersonAIO
     - FlickeringLight
     - MainMenu
+    - MazeData
     - MazeLoader
     - PauseMenu
     - PlayerCollider
-    - TimeSystem
     - TurnTheGameOn.ArrowWaypointer.Waypoint
     - TurnTheGameOn.ArrowWaypointer.WaypointController
     GitHub.Unity.45.dll:
@@ -39,6 +39,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.InputField
     - UnityEngine.UI.Text
   sceneClasses:
     Assets/Scenes/Level 1.unity:
@@ -83,35 +84,31 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11648}
-    - Class: 114
-      Script: {instanceID: 11776}
-    - Class: 114
-      Script: {instanceID: 11796}
+      Script: {instanceID: 11704}
     - Class: 114
       Script: {instanceID: 11832}
     - Class: 114
-      Script: {instanceID: 11876}
+      Script: {instanceID: 11852}
     - Class: 114
-      Script: {instanceID: 12028}
+      Script: {instanceID: 11932}
     - Class: 114
-      Script: {instanceID: 12306}
+      Script: {instanceID: 12086}
     - Class: 114
-      Script: {instanceID: 12310}
+      Script: {instanceID: 12364}
     - Class: 114
-      Script: {instanceID: 12838}
+      Script: {instanceID: 12368}
     - Class: 114
-      Script: {instanceID: 13090}
+      Script: {instanceID: 12898}
     - Class: 114
-      Script: {instanceID: 13306}
+      Script: {instanceID: 13150}
     - Class: 114
-      Script: {instanceID: 13330}
+      Script: {instanceID: 13388}
     - Class: 114
-      Script: {instanceID: 13412}
+      Script: {instanceID: 13470}
     - Class: 114
-      Script: {instanceID: 13428}
+      Script: {instanceID: 13486}
     - Class: 114
-      Script: {instanceID: 13836}
+      Script: {instanceID: 13896}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 124
@@ -178,35 +175,31 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11648}
-    - Class: 114
-      Script: {instanceID: 11776}
-    - Class: 114
-      Script: {instanceID: 11796}
+      Script: {instanceID: 11704}
     - Class: 114
       Script: {instanceID: 11832}
     - Class: 114
-      Script: {instanceID: 11876}
+      Script: {instanceID: 11852}
     - Class: 114
-      Script: {instanceID: 12028}
+      Script: {instanceID: 11932}
     - Class: 114
-      Script: {instanceID: 12306}
+      Script: {instanceID: 12086}
     - Class: 114
-      Script: {instanceID: 12310}
+      Script: {instanceID: 12364}
     - Class: 114
-      Script: {instanceID: 12838}
+      Script: {instanceID: 12368}
     - Class: 114
-      Script: {instanceID: 13090}
+      Script: {instanceID: 12898}
     - Class: 114
-      Script: {instanceID: 13306}
+      Script: {instanceID: 13150}
     - Class: 114
-      Script: {instanceID: 13330}
+      Script: {instanceID: 13388}
     - Class: 114
-      Script: {instanceID: 13412}
+      Script: {instanceID: 13470}
     - Class: 114
-      Script: {instanceID: 13428}
+      Script: {instanceID: 13486}
     - Class: 114
-      Script: {instanceID: 13836}
+      Script: {instanceID: 13896}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 124
@@ -273,35 +266,31 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11648}
-    - Class: 114
-      Script: {instanceID: 11776}
-    - Class: 114
-      Script: {instanceID: 11796}
+      Script: {instanceID: 11704}
     - Class: 114
       Script: {instanceID: 11832}
     - Class: 114
-      Script: {instanceID: 11876}
+      Script: {instanceID: 11852}
     - Class: 114
-      Script: {instanceID: 12028}
+      Script: {instanceID: 11932}
     - Class: 114
-      Script: {instanceID: 12306}
+      Script: {instanceID: 12086}
     - Class: 114
-      Script: {instanceID: 12310}
+      Script: {instanceID: 12364}
     - Class: 114
-      Script: {instanceID: 12838}
+      Script: {instanceID: 12368}
     - Class: 114
-      Script: {instanceID: 13090}
+      Script: {instanceID: 12898}
     - Class: 114
-      Script: {instanceID: 13306}
+      Script: {instanceID: 13150}
     - Class: 114
-      Script: {instanceID: 13330}
+      Script: {instanceID: 13388}
     - Class: 114
-      Script: {instanceID: 13412}
+      Script: {instanceID: 13470}
     - Class: 114
-      Script: {instanceID: 13428}
+      Script: {instanceID: 13486}
     - Class: 114
-      Script: {instanceID: 13836}
+      Script: {instanceID: 13896}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 124
@@ -368,35 +357,31 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11648}
-    - Class: 114
-      Script: {instanceID: 11776}
-    - Class: 114
-      Script: {instanceID: 11796}
+      Script: {instanceID: 11704}
     - Class: 114
       Script: {instanceID: 11832}
     - Class: 114
-      Script: {instanceID: 11876}
+      Script: {instanceID: 11852}
     - Class: 114
-      Script: {instanceID: 12028}
+      Script: {instanceID: 11932}
     - Class: 114
-      Script: {instanceID: 12306}
+      Script: {instanceID: 12086}
     - Class: 114
-      Script: {instanceID: 12310}
+      Script: {instanceID: 12364}
     - Class: 114
-      Script: {instanceID: 12838}
+      Script: {instanceID: 12368}
     - Class: 114
-      Script: {instanceID: 13090}
+      Script: {instanceID: 12898}
     - Class: 114
-      Script: {instanceID: 13306}
+      Script: {instanceID: 13150}
     - Class: 114
-      Script: {instanceID: 13330}
+      Script: {instanceID: 13388}
     - Class: 114
-      Script: {instanceID: 13412}
+      Script: {instanceID: 13470}
     - Class: 114
-      Script: {instanceID: 13428}
+      Script: {instanceID: 13486}
     - Class: 114
-      Script: {instanceID: 13836}
+      Script: {instanceID: 13896}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 124
@@ -453,33 +438,39 @@ ScriptsOnlyBuild:
     - Class: 109
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11648}
+      Script: {instanceID: 11704}
     - Class: 114
-      Script: {instanceID: 11876}
+      Script: {instanceID: 11888}
     - Class: 114
-      Script: {instanceID: 11982}
+      Script: {instanceID: 11932}
     - Class: 114
-      Script: {instanceID: 12310}
+      Script: {instanceID: 12038}
     - Class: 114
-      Script: {instanceID: 12340}
+      Script: {instanceID: 12072}
     - Class: 114
-      Script: {instanceID: 12612}
+      Script: {instanceID: 12368}
     - Class: 114
-      Script: {instanceID: 12838}
+      Script: {instanceID: 12398}
     - Class: 114
-      Script: {instanceID: 13090}
+      Script: {instanceID: 12674}
     - Class: 114
-      Script: {instanceID: 13108}
+      Script: {instanceID: 12898}
     - Class: 114
-      Script: {instanceID: 13330}
+      Script: {instanceID: 13114}
     - Class: 114
-      Script: {instanceID: 13412}
+      Script: {instanceID: 13150}
     - Class: 114
-      Script: {instanceID: 13604}
+      Script: {instanceID: 13170}
     - Class: 114
-      Script: {instanceID: 13836}
+      Script: {instanceID: 13388}
     - Class: 114
-      Script: {instanceID: 13890}
+      Script: {instanceID: 13470}
+    - Class: 114
+      Script: {instanceID: 13662}
+    - Class: 114
+      Script: {instanceID: 13896}
+    - Class: 114
+      Script: {instanceID: 13950}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -517,7 +508,7 @@ ScriptsOnlyBuild:
     className: ProceduralGridMover
   - hash:
       serializedVersion: 2
-      Hash: c42672c997f8be6b1aa86a927ebea785
+      Hash: 3c08375166df118bd1801438fc36b92f
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SelectionCaret
@@ -553,7 +544,7 @@ ScriptsOnlyBuild:
     className: FlickeringLight
   - hash:
       serializedVersion: 2
-      Hash: 4a9cffe852d8e6cac780592acb5fc767
+      Hash: ef1171243bb9a88025f747d251e11d8a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MazeLoader
@@ -571,7 +562,7 @@ ScriptsOnlyBuild:
     className: ActivationTrack
   - hash:
       serializedVersion: 2
-      Hash: aeb62f729c52c814dec86c47dcac1471
+      Hash: 72712369a7c681ad84fc255a5ec0b333
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Text
@@ -601,7 +592,7 @@ ScriptsOnlyBuild:
     className: TouchInputModule
   - hash:
       serializedVersion: 2
-      Hash: 89f9a1b4c64db9559e39f4a2e3bfaadd
+      Hash: 8e0313c6f5e2ce35991fec2d64f8eaab
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Image
@@ -661,7 +652,13 @@ ScriptsOnlyBuild:
     className: PhysicsRaycaster
   - hash:
       serializedVersion: 2
-      Hash: 3817a6003ed621a53b539cb414953489
+      Hash: 696b9300ac7f57ea4ddefbab5091dfd8
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MazeData
+  - hash:
+      serializedVersion: 2
+      Hash: 28cc376363cddb7e7bb8d44addd59eeb
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerCollider
@@ -697,7 +694,7 @@ ScriptsOnlyBuild:
     className: RectMask2D
   - hash:
       serializedVersion: 2
-      Hash: d941ab6dd93d37ffdf2277f2ea2375a0
+      Hash: 4e9333594897a1fb8b136ad2eae996c7
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SubMeshUI
@@ -761,6 +758,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: ControlTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 99fffe1e13b29523020d55dcf6e0f963
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FirebaseWebRequester
   - hash:
       serializedVersion: 2
       Hash: 8dc90e648ac06f43bdd31ac9fa8f4579
@@ -829,12 +832,6 @@ ScriptsOnlyBuild:
     className: RemoteTestResultSender
   - hash:
       serializedVersion: 2
-      Hash: 0716c5142cf83bba272501a779f27740
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: ScoreSystem
-  - hash:
-      serializedVersion: 2
       Hash: 43acdecfcc62de1110964c47067c846f
     assemblyName: AstarPathfindingProject.dll
     namespaceName: Pathfinding
@@ -859,7 +856,7 @@ ScriptsOnlyBuild:
     className: Button
   - hash:
       serializedVersion: 2
-      Hash: f84d945e5e1ca985698660fc26e9657f
+      Hash: feb9a5a121d15fa3654d4e50a5233045
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: RawImage
@@ -943,19 +940,13 @@ ScriptsOnlyBuild:
     className: MineBotAI
   - hash:
       serializedVersion: 2
-      Hash: 67f18ed32dec0bd859229e2c13419f7e
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: TimeSystem
-  - hash:
-      serializedVersion: 2
       Hash: 8abe5c5970b933d28c84fe29c2232578
     assemblyName: AstarPathfindingProject.dll
     namespaceName: Pathfinding
     className: RelevantGraphSurface
   - hash:
       serializedVersion: 2
-      Hash: 8001a5f7502aab37e42206da015e6914
+      Hash: 3b760e6526e13f7504f59e210145899a
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TextMeshProUGUI
@@ -1009,7 +1000,7 @@ ScriptsOnlyBuild:
     className: GraphicRaycaster
   - hash:
       serializedVersion: 2
-      Hash: 764310837a40c25e0b7a3be858025d63
+      Hash: d6008572cfed34621896a00abf282f24
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PauseMenu
@@ -1069,7 +1060,7 @@ ScriptsOnlyBuild:
     className: AnimationLink
   - hash:
       serializedVersion: 2
-      Hash: 21d73eda81c18eacd2c91ad5dfaf2e32
+      Hash: df434544c9f7b33d1cc7e635b180d279
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TextMeshPro
@@ -1187,12 +1178,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 99fffe1e13b29523020d55dcf6e0f963
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: FirebaseWebRequester
   platform: 5
   scenePathNames:
   - Assets/Scenes/Menu.unity
@@ -1200,6 +1185,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Level 2.unity
   - Assets/Scenes/Level 3.unity
   - Assets/Scenes/Level 4.unity
-  playerPath: C:/Users/Tomsw/OneDrive/Documents/Universiteit/Master/Jaar 2/Semester
-    2/New Media Lab/Maze Game/Falsification-Maze/Falsification Maze/Falsification
-    Maze.exe
+  playerPath: D:/Ismail/Radboud/Master 2/NML/fm-test/Falsification Maze.exe
