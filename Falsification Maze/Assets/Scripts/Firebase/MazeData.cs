@@ -8,10 +8,18 @@ public class MazeData : MonoBehaviour
     public string playerId;
 
     public List<float> timeLevels = new List<float>();
-    public float timeLevel1;
-    public float timeLevel2;
-    public float timeLevel3;
-    public float timeLevel4;
+    public List<float> timeLookUpLevels = new List<float>();
+
+    public List<int> tileCounterLevels = new List<int>();
+    public List<int> tileCorrectCounterLevels = new List<int>();
+    public List<int> tileWrongCounterLevels = new List<int>();
+
+    public List<int> intialShortestPathLengthLevels = new List<int>();
+    public List<int> fmCounterLevels = new List<int>();
+    public List<List<float>> fmTimeStampsLevels = new List<List<float>>();
+
+    public List<int> pauseCounterLevels = new List<int>();
+
 
     void Start() {
 

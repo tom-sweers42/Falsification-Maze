@@ -20,6 +20,7 @@ public class PlayerCollider : MonoBehaviour
     private int wrongCounter = 0;
     private MazeCell curCheckCell;
     private float time = 0;
+
     // FM Texts
     private String[] fmTexts = new String [] {
         "Did you notice the markings on the roof?",
@@ -48,14 +49,24 @@ public class PlayerCollider : MonoBehaviour
     // Finishing
     private bool won = false;
 
+    // Data
+    public int tilesCounter;
+    public int totalWrongCounter;
+    public int totalCorrectCounter;
+    public int fmCounter;
+    private int prevR, prevC = 0;
+
+    public List<float> fmTimeStamps = new List<float>();
+
+
     void Update() {
 
         Transform transform = GetComponent<Transform>();
         (int r, int c) = getCoordinates(transform);
-
-        if (r == gameManager.mazeRows - 1 && c == gameManager.mazeColumns-1 && !won) {
-            gameManager.gameWon();
-            won = true;
+        if (r != prevR || c != prevC) {
+            tilesCounter += 1;
+            prevC = c;
+            prevR = r;
         }
         if (!gameManager.correctPath) {
             if (!folllowedGreenPath && gameManager.checkCell != null && r == gameManager.checkCell.r && c == gameManager.checkCell.c) {
@@ -65,6 +76,8 @@ public class PlayerCollider : MonoBehaviour
                     folllowedGreenPath = true;
                     Debug.Log("You Followed the greenpath");
                     time = 0;
+                    fmCounter += 1;
+                    fmTimeStamps.Add(gameManager.start);
                 }
                 curCheckCell = gameManager.checkCell;
                 bool done = false;
@@ -91,6 +104,8 @@ public class PlayerCollider : MonoBehaviour
                     curCheckCell = null;
                     Debug.Log("You Followed the greenpath");
                     time = 0;
+                    fmCounter += 1;
+                    fmTimeStamps.Add(gameManager.start);
                 }
             }
 
@@ -105,16 +120,20 @@ public class PlayerCollider : MonoBehaviour
         if (pathFinishLength != 0 && gameManager.copyMazeCells[r,c].drawRoute(gameManager.materialPath,0) > pathFinishLength ) {
             Debug.Log("Wrong Path!!");
             wrongCounter += 1;
-            if (gameManager.fm.text == "" && wrongCounter >= 5) {
+            totalWrongCounter += 1;
+            if (gameManager.fm != null && gameManager.fm.text == "" && wrongCounter >= 5) {
                 System.Random random = new System.Random();
                 List<String> combinedList = fmTextsType1.Concat(fmTextsType2).ToList().Concat(fmTextsType3).ToList();
                 gameManager.fm.text = combinedList[random.Next(combinedList.Count)];
                 wrongTurn = true;
                 time = 0;
+                fmCounter += 1;
+                fmTimeStamps.Add(gameManager.start);
             }
         }
-        if (pathFinishLength != 0 && gameManager.copyMazeCells[r,c].drawRoute(gameManager.materialPath,0) < pathFinishLength ) {
+        if (gameManager.copyMazeCells[r,c].drawRoute(gameManager.materialPath,0) < pathFinishLength ) {
             Debug.Log("Correct Path!");
+            totalCorrectCounter += 1;
             wrongCounter = 0;
         }
         if (wrongTurn) {
@@ -127,6 +146,10 @@ public class PlayerCollider : MonoBehaviour
         pathFinishLength = gameManager.copyMazeCells[r,c].drawRoute(gameManager.materialPath,0);
         gameManager.ClearPath();
         int currPathLength = gameManager.mazeCells[r, c].drawRoute(gameManager.materialPath, 0);
+        if (r == gameManager.mazeRows - 1 && c == gameManager.mazeColumns-1 && !won) {
+            gameManager.gameWon();
+            won = true;
+        }
     }
 
     (int, int) getCoordinates(Transform transform) {

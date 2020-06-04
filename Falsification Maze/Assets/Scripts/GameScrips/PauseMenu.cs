@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseUI;
     public static bool pause = false;
+    public MazeLoader gameManager;
 
     // Update is called once per frame
     void Update()
@@ -16,7 +17,7 @@ public class PauseMenu : MonoBehaviour
             if (pause)
             {
                 Resume();
-            } else 
+            } else
             {
                 Pause();
             }
@@ -47,5 +48,6 @@ public class PauseMenu : MonoBehaviour
         pauseUI.SetActive(true);
         Time.timeScale = 0f;
         pause = true;
+        gameManager.pauseCounter += 1;
     }
 }

@@ -8,8 +8,9 @@ using UnityEngine.SceneManagement;
 using TMPro;
 
 public class MazeLoader : MonoBehaviour {
-
+    #region Variables
     // Maze intstantiators
+    #region Maze Instantiators
 	public int mazeRows, mazeColumns;
     public int randomDeletesDivider;
 	public int randomAdditionsDivider;
@@ -17,49 +18,68 @@ public class MazeLoader : MonoBehaviour {
     public MazeCell[,] copyMazeCells;
 	public float size = 2f;
     public float heigth = 2f;
+    #endregion
 
     // Correctness of green path
+    #region Green Path
     public bool correctPath;
-
+    #endregion
     // Maze Gameobjects
+    #region Maze Gameobjects
 	public GameObject wall;
 
     public GameObject roof;
     public GameObject dotWall;
+    #endregion
 
     // Maze Materials
-
+    #region Maze Materials
 	public Material materialFinish;
 	public Material materialPath;
 	public Material materialMarkerFar;
 	public Material materialMarkerNear;
 	public Material materialMarkerCorrect;
-
     public Material materialNormal;
+    #endregion
 
     // Finishing
+    #region Finishing
     private bool finished = false;
     public GameObject levelComplete;
     public GameObject timeOver;
+    #endregion
+
 
     // FM
-
+    #region FM
     public TMP_Text fm;
     public MazeCell checkCell;
 	public int initPathLength;
+    #endregion
 
     // Data Collection
+    #region Data Collectin
     public GameObject data;
+    public FirstPersonAIO player;
+    public int pauseCounter = 0;
+
+    public PlayerCollider playerCollider;
+
+    private float timeLookUp = 0f;
+    #endregion
 
     //Timing
+    #region Timing
     public GameObject timeSystem;
     public TMP_Text timeText;
     public TMP_Text levelText;
-    private float start = 0;
+    public float start = 0;
     private float diff;
     public float maxTime = 5; //seconds
     private bool noTime = false;
+    #endregion
 
+    #endregion
 
     void Start () {
         data = GameObject.Find("Data");
@@ -89,9 +109,14 @@ public class MazeLoader : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        // Debug.Log(Camera.main.transform.rotation.x);
+        float delta = Time.deltaTime;
         if (!finished && !noTime){
-
-            start += Time.deltaTime;
+            if (player.playerCamera.transform.localRotation[0] < -0.37) {
+                timeLookUp += delta;
+                Debug.Log(timeLookUp);
+            }
+            start += delta;
             diff = maxTime - start;
             if (diff <= 0 && !noTime)
             {
@@ -108,7 +133,7 @@ public class MazeLoader : MonoBehaviour {
         }
         if (noTime & (Input.GetKeyDown(KeyCode.Space)))
         {
-            gameOver();
+            gameLost();
             noTime = false;
             CrossSceneInformationClass.level += 1;
             Debug.Log(CrossSceneInformationClass.level);
@@ -250,14 +275,27 @@ public class MazeLoader : MonoBehaviour {
         levelText.text = "LEVEL " + CrossSceneInformationClass.level;
         Time.timeScale = 0f;
         finished = true;
+        gameOver();
 
     }
 
-    public void gameOver()
+    public void gameLost()
     {
         MazeData mazeData = data.GetComponent<MazeData>();
         mazeData.timeLevels.Add(-1f);
+        gameOver();
+    }
 
+    public void gameOver(){
+        MazeData mazeData = data.GetComponent<MazeData>();
+        mazeData.timeLookUpLevels.Add(timeLookUp);
+        mazeData.tileCounterLevels.Add(playerCollider.tilesCounter);
+        mazeData.tileCorrectCounterLevels.Add(playerCollider.totalCorrectCounter);
+        mazeData.tileWrongCounterLevels.Add(playerCollider.totalWrongCounter);
+        mazeData.fmCounterLevels.Add(playerCollider.fmCounter);
+        mazeData.fmTimeStampsLevels.Add(playerCollider.fmTimeStamps);
+        mazeData.pauseCounterLevels.Add(pauseCounter);
+        mazeData.intialShortestPathLengthLevels.Add(initPathLength);
     }
     public Color colourDirDot(int pathLength, int newPathLength) {
         int diff = pathLength - newPathLength;
