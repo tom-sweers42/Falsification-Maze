@@ -70,7 +70,7 @@ public class PlayerCollider : MonoBehaviour
         }
         if (!gameManager.correctPath) {
             if (!folllowedGreenPath && gameManager.checkCell != null && r == gameManager.checkCell.r && c == gameManager.checkCell.c) {
-                if (gameManager.fm.text == "") {
+                if (gameManager.fm != null && gameManager.fm.text == "") {
                     System.Random random = new System.Random();
                     gameManager.fm.text = fmTexts[random.Next(fmTextsType1.Count)];
                     folllowedGreenPath = true;
@@ -97,7 +97,7 @@ public class PlayerCollider : MonoBehaviour
             }
 
             if (folllowedGreenPath && curCheckCell != null && r == curCheckCell.r && c == curCheckCell.c) {
-                if (gameManager.fm.text == "") {
+                if (gameManager.fm != null && gameManager.fm.text == "") {
                     Debug.Log("curCheckcel: " + curCheckCell.r + ", " + curCheckCell.c);
                     System.Random random = new System.Random();
                     gameManager.fm.text = fmTextsType2[random.Next(fmTextsType2.Count)];
