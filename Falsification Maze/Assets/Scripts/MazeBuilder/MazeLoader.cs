@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.Networking;
+using SimpleJSON;
 
 public class MazeLoader : MonoBehaviour {
     #region Variables
@@ -81,6 +83,10 @@ public class MazeLoader : MonoBehaviour {
 
     #endregion
 
+    //======================================================================
+    // LEVEL MANAGEMENT
+    //======================================================================
+
     void Start () {
         data = GameObject.Find("Data");
 		InitializeMaze ();
@@ -98,7 +104,7 @@ public class MazeLoader : MonoBehaviour {
                     mazeCells[r,c] = mazeCells[r,c].DeepCopy();
                 }
             }
-            Debug.Log(newFinish.r + ", " + newFinish.c);
+            //Debug.Log(newFinish.r + ", " + newFinish.c);
             ma.addShortestPaths(materialPath,0,0, newFinish.r, newFinish.c);
             checkCell = mazeCells[checkCell.r, checkCell.c];
             for (int i = 0; i <= 5; i++) {
@@ -114,7 +120,7 @@ public class MazeLoader : MonoBehaviour {
         if (!finished && !noTime){
             if (player.playerCamera.transform.localRotation[0] < -0.37) {
                 timeLookUp += delta;
-                Debug.Log(timeLookUp);
+                //Debug.Log(timeLookUp);
             }
             start += delta;
             diff = maxTime - start;
@@ -136,7 +142,7 @@ public class MazeLoader : MonoBehaviour {
             gameLost();
             noTime = false;
             CrossSceneInformationClass.level += 1;
-            Debug.Log(CrossSceneInformationClass.level);
+            //Debug.Log("CrossSceneInformationClass: " + CrossSceneInformationClass.level);
             if (CrossSceneInformationClass.level < 5)
             {
                 Time.timeScale = 1f;
@@ -150,7 +156,7 @@ public class MazeLoader : MonoBehaviour {
         if (finished & (Input.GetKeyDown(KeyCode.Space)))
         {
             CrossSceneInformationClass.level += 1;
-            Debug.Log(CrossSceneInformationClass.level);
+            //Debug.Log("CrossSceneInformationClass: " + CrossSceneInformationClass.level);
             if (CrossSceneInformationClass.level < 5)
             {
                 Time.timeScale = 1f;
@@ -161,7 +167,143 @@ public class MazeLoader : MonoBehaviour {
                 Application.Quit();
             }
         }
-	}
+    }
+
+    //======================================================================
+    // MAZE GENERATION
+    //======================================================================
+
+    private void InitializeMaze()
+    {
+
+        mazeCells = new MazeCell[mazeRows, mazeColumns];
+        for (int r = 0; r < mazeRows; r++)
+        {
+            for (int c = 0; c < mazeColumns; c++)
+            {
+                mazeCells[r, c] = new MazeCell(c, r);
+                // For now, use the same wall object for the floor!
+                mazeCells[r, c].floor = Instantiate(roof, new Vector3(r * size, -(heigth / 2f), c * size), Quaternion.identity) as GameObject;
+                mazeCells[r, c].floor.name = "Floor " + r + "," + c;
+                mazeCells[r, c].floor.transform.Rotate(Vector3.right, 90f);
+
+                mazeCells[r, c].roof = Instantiate(roof, new Vector3(r * size, (heigth / 2f), c * size), Quaternion.identity) as GameObject;
+                mazeCells[r, c].roof.name = "Roof " + r + "," + c;
+                mazeCells[r, c].roof.transform.Rotate(Vector3.right, 90f);
+
+
+                if (c == 0)
+                {
+                    mazeCells[r, c].westWall = Instantiate(wall, new Vector3(r * size, 0, (c * size) - (size / 2f)), Quaternion.identity) as GameObject;
+                    mazeCells[r, c].westWall.name = "West Wall " + r + "," + c;
+                }
+
+                mazeCells[r, c].eastWall = Instantiate(wall, new Vector3(r * size, 0, (c * size) + (size / 2f)), Quaternion.identity) as GameObject;
+                mazeCells[r, c].eastWall.name = "East Wall " + r + "," + c;
+
+                if (r == 0)
+                {
+                    mazeCells[r, c].northWall = Instantiate(wall, new Vector3((r * size) - (size / 2f), 0, c * size), Quaternion.identity) as GameObject;
+                    mazeCells[r, c].northWall.name = "North Wall " + r + "," + c;
+                    mazeCells[r, c].northWall.transform.Rotate(Vector3.up * 90f);
+
+                }
+
+                mazeCells[r, c].southWall = Instantiate(wall, new Vector3((r * size) + (size / 2f), 0, c * size), Quaternion.identity) as GameObject;
+                mazeCells[r, c].southWall.name = "South Wall " + r + "," + c;
+                mazeCells[r, c].southWall.transform.Rotate(Vector3.up * 90f);
+
+                if (c == mazeColumns - 1 && r == mazeRows - 1)
+                {
+                    mazeCells[r, c].floor.name = "END";
+
+                    MeshRenderer meshRenderer = mazeCells[r, c].southWall.GetComponent<MeshRenderer>();
+                    meshRenderer.material = materialFinish;
+
+                    MeshRenderer meshRenderer2 = mazeCells[r, c].eastWall.GetComponent<MeshRenderer>();
+                    meshRenderer2.material = materialFinish;
+
+                    MeshRenderer meshRenderer3 = mazeCells[r, c].roof.GetComponent<MeshRenderer>();
+                    meshRenderer3.material = materialFinish;
+                }
+            }
+        }
+    }
+
+    public void DeleteRandomWalls()
+    {
+        int randomDeletes = Convert.ToInt32((mazeColumns * mazeRows) / randomDeletesDivider);
+        for (int i = 0; i < randomDeletes; i++)
+        {
+            int r = UnityEngine.Random.Range(0, mazeRows - 1);
+            int c = UnityEngine.Random.Range(0, mazeColumns - 1);
+            int direction = UnityEngine.Random.Range(0, 2);
+
+            if (direction == 0)
+            {
+                if (!DestroyWallIfItExists(mazeCells[r, c].southWall))
+                {
+                    i--;
+                }
+            }
+            else
+            {
+                if (!DestroyWallIfItExists(mazeCells[r, c].eastWall))
+                {
+                    i--;
+                }
+            }
+        }
+    }
+
+    private bool DestroyWallIfItExists(GameObject wall)
+    {
+        if (wall != null)
+        {
+            GameObject.Destroy(wall);
+            wall.SetActive(false);
+            return true;
+        }
+        return false;
+    }
+
+    public int LongestPathLength(MazeCell cell)
+    {
+        int maxPathLength = 0;
+        if (cell.kids.Count > 0)
+        {
+            foreach (MazeCell kid in cell.kids)
+            {
+                int pathLength = LongestPathLength(kid);
+                if (pathLength > maxPathLength)
+                    maxPathLength = pathLength;
+            }
+            return maxPathLength + 1;
+        }
+        else
+            return 0;
+    }
+
+    public void ClearPath()
+    {
+        for (int r = 0; r < mazeRows; r++)
+        {
+            for (int c = 0; c < mazeColumns; c++)
+            {
+                if (c != mazeColumns - 1 || r != mazeRows - 1)
+                {
+                    MeshRenderer meshRenderer = mazeCells[r, c].floor.GetComponent<MeshRenderer>();
+                    MeshRenderer meshRendererCopy = copyMazeCells[r, c].floor.GetComponent<MeshRenderer>();
+                    meshRenderer.material = materialNormal;
+                    meshRendererCopy.material = materialNormal;
+                }
+            }
+        }
+    }
+
+    //======================================================================
+    // ADD COLOR CUES
+    //======================================================================
 
     void AddPathBasedColor()
     {
@@ -175,6 +317,24 @@ public class MazeLoader : MonoBehaviour {
             }
         }
     }
+
+    public Color colourDirDot(int pathLength, int newPathLength)
+    {
+        int diff = pathLength - newPathLength;
+        if (diff == 1)
+        {
+            return Color.green;
+        }
+        else if (diff == -1)
+        {
+            return Color.blue;
+        }
+        else
+        {
+            return Color.blue;
+        }
+    }
+
     void ColorCode(MazeCell cell) {
         int maxLength = LongestPathLength(mazeCells[mazeRows-1, mazeColumns-1]);
 
@@ -267,6 +427,10 @@ public class MazeLoader : MonoBehaviour {
 
     }
 
+    //======================================================================
+    // GAME MANAGEMENT
+    //======================================================================
+
     public void gameWon()
     {
         MazeData mazeData = data.GetComponent<MazeData>();
@@ -287,6 +451,8 @@ public class MazeLoader : MonoBehaviour {
     }
 
     public void gameOver(){
+        Debug.Log("Level: " + CrossSceneInformationClass.level + "Game Over...");
+        // update Maze Data
         MazeData mazeData = data.GetComponent<MazeData>();
         mazeData.timeLookUpLevels.Add(timeLookUp);
         mazeData.tileCounterLevels.Add(playerCollider.tilesCounter);
@@ -296,129 +462,74 @@ public class MazeLoader : MonoBehaviour {
         mazeData.fmTimeStampsLevels.Add(playerCollider.fmTimeStamps);
         mazeData.pauseCounterLevels.Add(pauseCounter);
         mazeData.intialShortestPathLengthLevels.Add(initPathLength);
+        // send maze data to firebase
+        StartCoroutine(SendData(mazeData, CrossSceneInformationClass.level));
     }
-    public Color colourDirDot(int pathLength, int newPathLength) {
-        int diff = pathLength - newPathLength;
-        if (diff == 1) {
-            return Color.green;
-        }
-        else if (diff == -1) {
-            return Color.blue;
-        }
-        else {
-            return Color.blue;
-        }
-    }
-    public int LongestPathLength(MazeCell cell) {
-        int maxPathLength = 0;
-        if (cell.kids.Count > 0) {
-            foreach (MazeCell kid in cell.kids) {
-                int pathLength = LongestPathLength(kid);
-                if (pathLength > maxPathLength)
-                    maxPathLength = pathLength;
+
+    //======================================================================
+    // DATA MANAGEMENT
+    //======================================================================
+
+    // initialize default URIs and API Key
+    private readonly string tokenApi = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyC21UEISTGjswnV665STXXQ4ksiIXnkyZw";
+    private readonly string firebaseApi = "https://falsificationmaze.firebaseio.com/users/";
+    private string apiKey = "";
+
+    IEnumerator SendData(MazeData mazeData, int level)
+    {
+        // get API Auth Key
+        using (UnityWebRequest apiKeyRequest = UnityWebRequest.Post(tokenApi, new WWWForm()))
+        {
+            // send request
+            yield return apiKeyRequest.SendWebRequest();
+
+            // check for errors
+            if (apiKeyRequest.isNetworkError || apiKeyRequest.isHttpError)
+            {
+                Debug.LogError(apiKeyRequest.error);
             }
-            return maxPathLength + 1;
-        }
-        else
-            return 0;
-        return maxPathLength;
-    }
+            else
+            {
+                // parse API response
+                JSONNode apiKeyResponse = JSON.Parse(apiKeyRequest.downloadHandler.text);
 
-    public void DeleteRandomWalls() {
-        int randomDeletes = Convert.ToInt32((mazeColumns*mazeRows)/randomDeletesDivider);
-        for (int i = 0; i < randomDeletes; i++) {
-            int r = UnityEngine.Random.Range(0, mazeRows-1);
-            int c = UnityEngine.Random.Range(0, mazeColumns-1);
-            int direction = UnityEngine.Random.Range(0,2);
+                // fetch API Auth Key
+                apiKey = apiKeyResponse["idToken"];
 
-            if (direction == 0) {
-                if (!DestroyWallIfItExists(mazeCells[r,c].southWall)) {
-                    i--;
-                }
+                Debug.Log("API Key: " + apiKey);
             }
-            else {
-                if (!DestroyWallIfItExists(mazeCells[r,c].eastWall)) {
-                    i--;
-                }
-            }
+
         }
-    }
 
-	private bool DestroyWallIfItExists(GameObject wall) {
-		if (wall != null) {
-			GameObject.Destroy (wall);
-            wall.SetActive(false);
-            return true;
-		}
-        return false;
-	}
+        // define JSON body for HTTP REST PUT request
+        string jsonBody = JsonUtility.ToJson(mazeData);
 
-    public void ClearPath() {
-		for (int r = 0; r < mazeRows; r++) {
-			for (int c = 0; c < mazeColumns; c++) {
-				if(c != mazeColumns -1 || r != mazeRows - 1) {
-					MeshRenderer meshRenderer = mazeCells[r, c].floor.GetComponent<MeshRenderer>();
-					MeshRenderer meshRendererCopy = copyMazeCells[r, c].floor.GetComponent<MeshRenderer>();
-					meshRenderer.material = materialNormal;
-					meshRendererCopy.material = materialNormal;
-                }
+        Debug.Log(jsonBody);
+
+        // define firebaseUri
+        // (using base Uri + new userId json filename + auth key)
+        string firebasePutUri = firebaseApi + mazeData.playerId + "/level" + level.ToString() + ".json?auth=" + apiKey;
+
+        Debug.Log(firebasePutUri);
+
+        // send user data
+        using (UnityWebRequest firebaseRequest = UnityWebRequest.Put(firebasePutUri, jsonBody))
+        {
+            // send request
+            yield return firebaseRequest.SendWebRequest();
+
+            // check for errors
+            if (firebaseRequest.isNetworkError || firebaseRequest.isHttpError)
+            {
+                Debug.LogError(firebaseRequest.error);
+            }
+            else
+            {
+                Debug.Log("Data Sent!");
             }
         }
     }
 
-	private void InitializeMaze() {
-
-		mazeCells = new MazeCell[mazeRows,mazeColumns];
-		for (int r = 0; r < mazeRows; r++) {
-			for (int c = 0; c < mazeColumns; c++) {
-                mazeCells [r, c] = new MazeCell (c,r);
-				// For now, use the same wall object for the floor!
-				mazeCells [r, c] .floor = Instantiate (roof, new Vector3 (r*size, -(heigth/2f), c*size), Quaternion.identity) as GameObject;
-				mazeCells [r, c] .floor.name = "Floor " + r + "," + c;
-				mazeCells [r, c] .floor.transform.Rotate (Vector3.right, 90f);
-
-				mazeCells [r, c] .roof = Instantiate (roof, new Vector3 (r*size, (heigth/2f), c*size), Quaternion.identity) as GameObject;
-				mazeCells [r, c] .roof.name = "Roof " + r + "," + c;
-				mazeCells [r, c] .roof.transform.Rotate (Vector3.right, 90f);
-
-
-				if (c == 0) {
-					mazeCells[r,c].westWall = Instantiate (wall, new Vector3 (r*size, 0, (c*size) - (size/2f)), Quaternion.identity) as GameObject;
-					mazeCells [r, c].westWall.name = "West Wall " + r + "," + c;
-				}
-
-				mazeCells [r, c].eastWall = Instantiate (wall, new Vector3 (r*size, 0, (c*size) + (size/2f)), Quaternion.identity) as GameObject;
-				mazeCells [r, c].eastWall.name = "East Wall " + r + "," + c;
-
-				if (r == 0) {
-					mazeCells [r, c].northWall = Instantiate (wall, new Vector3 ((r*size) - (size/2f), 0, c*size), Quaternion.identity) as GameObject;
-					mazeCells [r, c].northWall.name = "North Wall " + r + "," + c;
-					mazeCells [r, c].northWall.transform.Rotate (Vector3.up * 90f);
-
-				}
-
-				mazeCells[r,c].southWall = Instantiate (wall, new Vector3 ((r*size) + (size/2f), 0, c*size), Quaternion.identity) as GameObject;
-				mazeCells [r, c].southWall.name = "South Wall " + r + "," + c;
-				mazeCells [r, c].southWall.transform.Rotate (Vector3.up * 90f);
-
-				if(c == mazeColumns -1 && r == mazeRows - 1)
-				{
-					mazeCells[r, c].floor.name = "END";
-
-					MeshRenderer meshRenderer = mazeCells[r, c].southWall.GetComponent<MeshRenderer>();
-					meshRenderer.material = materialFinish;
-
-					MeshRenderer meshRenderer2 = mazeCells[r, c].eastWall.GetComponent<MeshRenderer>();
-					meshRenderer2.material = materialFinish;
-
-					MeshRenderer meshRenderer3 = mazeCells[r, c].roof.GetComponent<MeshRenderer>();
-					meshRenderer3.material = materialFinish;
-				}
-			}
-		}
-
-
-	}
 }
 
 
