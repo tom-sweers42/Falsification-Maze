@@ -75,6 +75,7 @@ public class MazeLoader : MonoBehaviour {
     public GameObject timeSystem;
     public TMP_Text timeText;
     public TMP_Text levelText;
+    public TMP_Text failedLevelText;
     public float start = 0;
     private float diff;
     public float maxTime = 5; //seconds
@@ -124,18 +125,19 @@ public class MazeLoader : MonoBehaviour {
             }
             start += delta;
             diff = maxTime - start;
+            string minutes = Mathf.Floor(diff / 60).ToString("00");
+            string seconds = (diff%60).ToString("00");
+            timeText.text = "TIME " + minutes + ":" + seconds;
             if (diff <= 0 && !noTime)
             {
                 UnityEngine.Cursor.lockState = CursorLockMode.None;
                 UnityEngine.Cursor.visible = true;
                 Time.timeScale = 0f;
                 timeOver.SetActive(true);
-                levelText.text = "LEVEL " + CrossSceneInformationClass.level;
+                timeText.text = "";
+                failedLevelText.text = "LEVEL " + CrossSceneInformationClass.level;
                 noTime = true;
             }
-            string minutes = Mathf.Floor(diff / 60).ToString("00");
-            string seconds = (diff%60).ToString("00");
-            timeText.text = "TIME " + minutes + ":" + seconds;
         }
         if (noTime & (Input.GetKeyDown(KeyCode.Space)))
         {
@@ -436,6 +438,7 @@ public class MazeLoader : MonoBehaviour {
         MazeData mazeData = data.GetComponent<MazeData>();
         mazeData.timeLevels.Add(start);
         levelComplete.SetActive(true);
+        timeText.text = "";
         levelText.text = "LEVEL " + CrossSceneInformationClass.level;
         Time.timeScale = 0f;
         finished = true;

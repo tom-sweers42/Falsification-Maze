@@ -2127,9 +2127,9 @@ RectTransform:
   m_Father: {fileID: 828552678}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 673.7705, y: -885.94025}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -851, y: 71}
   m_SizeDelta: {x: 200, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1424978156
@@ -2823,6 +2823,11 @@ PrefabInstance:
       propertyPath: playerCollider
       value: 
       objectReference: {fileID: 269638048}
+    - target: {fileID: 4194800998294751530, guid: 0393e88e96b3c334b874ed4ac44fb3ab,
+        type: 3}
+      propertyPath: failedLevelText
+      value: 
+      objectReference: {fileID: 136303763}
     - target: {fileID: 4194800998294751531, guid: 0393e88e96b3c334b874ed4ac44fb3ab,
         type: 3}
       propertyPath: m_LocalPosition.x
