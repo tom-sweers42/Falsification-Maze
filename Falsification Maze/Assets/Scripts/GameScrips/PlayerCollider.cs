@@ -58,7 +58,9 @@ public class PlayerCollider : MonoBehaviour
 
     public List<float> fmTimeStamps = new List<float>();
 
-
+    void Start() {
+        transform.position = new Vector3(0, -gameManager.heigth/2f, 0);
+    }
     void Update() {
 
         Transform transform = GetComponent<Transform>();
@@ -129,6 +131,7 @@ public class PlayerCollider : MonoBehaviour
                 time = 0;
                 fmCounter += 1;
                 fmTimeStamps.Add(gameManager.start);
+                wrongCounter = 2;
             }
         }
         if (gameManager.copyMazeCells[r,c].drawRoute(gameManager.materialPath,0) < pathFinishLength ) {

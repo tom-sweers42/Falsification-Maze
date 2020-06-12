@@ -75,6 +75,7 @@ public class MazeLoader : MonoBehaviour {
     public GameObject timeSystem;
     public TMP_Text timeText;
     public TMP_Text levelText;
+    public TMP_Text failedLevelText;
     public float start = 0;
     private float diff;
     public float maxTime = 5; //seconds
@@ -88,6 +89,9 @@ public class MazeLoader : MonoBehaviour {
     //======================================================================
 
     void Start () {
+
+
+
         data = GameObject.Find("Data");
 		InitializeMaze ();
 		MazeAlgorithm ma = new HuntAndKillMazeAlgorithm (mazeCells);
@@ -115,6 +119,9 @@ public class MazeLoader : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        if (fm != null) {
+            fm.gameObject.transform.position = new Vector3 (Screen.width * 0.5f, Screen.height * 0.2f,0);
+        }
         // Debug.Log(Camera.main.transform.rotation.x);
         float delta = Time.deltaTime;
         if (!finished && !noTime){
@@ -124,22 +131,23 @@ public class MazeLoader : MonoBehaviour {
             }
             start += delta;
             diff = maxTime - start;
+            string minutes = Mathf.Floor(diff / 60).ToString("00");
+            string seconds = (diff%60).ToString("00");
+            timeText.text = "TIME " + minutes + ":" + seconds;
             if (diff <= 0 && !noTime)
             {
                 UnityEngine.Cursor.lockState = CursorLockMode.None;
                 UnityEngine.Cursor.visible = true;
                 Time.timeScale = 0f;
                 timeOver.SetActive(true);
-                levelText.text = "LEVEL " + CrossSceneInformationClass.level;
+                timeText.text = "";
+                failedLevelText.text = "LEVEL " + CrossSceneInformationClass.level;
+                gameLost();
                 noTime = true;
             }
-            string minutes = Mathf.Floor(diff / 60).ToString("00");
-            string seconds = (diff%60).ToString("00");
-            timeText.text = "TIME " + minutes + ":" + seconds;
         }
         if (noTime & (Input.GetKeyDown(KeyCode.Space)))
         {
-            gameLost();
             noTime = false;
             CrossSceneInformationClass.level += 1;
             //Debug.Log("CrossSceneInformationClass: " + CrossSceneInformationClass.level);
@@ -184,10 +192,12 @@ public class MazeLoader : MonoBehaviour {
                 mazeCells[r, c] = new MazeCell(c, r);
                 // For now, use the same wall object for the floor!
                 mazeCells[r, c].floor = Instantiate(roof, new Vector3(r * size, -(heigth / 2f), c * size), Quaternion.identity) as GameObject;
+                mazeCells[r, c].floor.transform.localScale = new Vector3(size, size, 0.6f);
                 mazeCells[r, c].floor.name = "Floor " + r + "," + c;
                 mazeCells[r, c].floor.transform.Rotate(Vector3.right, 90f);
 
                 mazeCells[r, c].roof = Instantiate(roof, new Vector3(r * size, (heigth / 2f), c * size), Quaternion.identity) as GameObject;
+                mazeCells[r, c].roof.transform.localScale = new Vector3(size, size, 0.6f);
                 mazeCells[r, c].roof.name = "Roof " + r + "," + c;
                 mazeCells[r, c].roof.transform.Rotate(Vector3.right, 90f);
 
@@ -195,21 +205,25 @@ public class MazeLoader : MonoBehaviour {
                 if (c == 0)
                 {
                     mazeCells[r, c].westWall = Instantiate(wall, new Vector3(r * size, 0, (c * size) - (size / 2f)), Quaternion.identity) as GameObject;
+                    mazeCells[r, c].westWall.transform.localScale = new Vector3(size, heigth, 0.6f);
                     mazeCells[r, c].westWall.name = "West Wall " + r + "," + c;
                 }
 
                 mazeCells[r, c].eastWall = Instantiate(wall, new Vector3(r * size, 0, (c * size) + (size / 2f)), Quaternion.identity) as GameObject;
+                mazeCells[r, c].eastWall.transform.localScale = new Vector3(size, heigth, 0.6f);
                 mazeCells[r, c].eastWall.name = "East Wall " + r + "," + c;
 
                 if (r == 0)
                 {
                     mazeCells[r, c].northWall = Instantiate(wall, new Vector3((r * size) - (size / 2f), 0, c * size), Quaternion.identity) as GameObject;
+                    mazeCells[r, c].northWall.transform.localScale = new Vector3(size, heigth, 0.6f);
                     mazeCells[r, c].northWall.name = "North Wall " + r + "," + c;
                     mazeCells[r, c].northWall.transform.Rotate(Vector3.up * 90f);
 
                 }
 
                 mazeCells[r, c].southWall = Instantiate(wall, new Vector3((r * size) + (size / 2f), 0, c * size), Quaternion.identity) as GameObject;
+                mazeCells[r, c].southWall.transform.localScale = new Vector3(size, heigth, 0.6f);
                 mazeCells[r, c].southWall.name = "South Wall " + r + "," + c;
                 mazeCells[r, c].southWall.transform.Rotate(Vector3.up * 90f);
 
@@ -341,6 +355,7 @@ public class MazeLoader : MonoBehaviour {
         int pathLength = cell.drawRoute(materialPath, 0);
         float divisor = (float) pathLength/maxLength;
         var curDotWall = GameObject.Instantiate(dotWall, cell.roof.transform.position, cell.roof.transform.rotation);
+        curDotWall.transform.localScale = new Vector3(size,size,0.6f);
         var middleDot = curDotWall.transform.Find("MiddleDot");
         var upDot = curDotWall.transform.Find("UpDot");
         var downDot = curDotWall.transform.Find("DownDot");
@@ -436,6 +451,7 @@ public class MazeLoader : MonoBehaviour {
         MazeData mazeData = data.GetComponent<MazeData>();
         mazeData.timeLevels.Add(start);
         levelComplete.SetActive(true);
+        timeText.text = "";
         levelText.text = "LEVEL " + CrossSceneInformationClass.level;
         Time.timeScale = 0f;
         finished = true;
@@ -463,6 +479,7 @@ public class MazeLoader : MonoBehaviour {
         mazeData.pauseCounterLevels.Add(pauseCounter);
         mazeData.intialShortestPathLengthLevels.Add(initPathLength);
         // send maze data to firebase
+        Debug.Log("Does it reach this!");
         StartCoroutine(SendData(mazeData, CrossSceneInformationClass.level));
     }
 
@@ -481,11 +498,17 @@ public class MazeLoader : MonoBehaviour {
         using (UnityWebRequest apiKeyRequest = UnityWebRequest.Post(tokenApi, new WWWForm()))
         {
             // send request
+            Debug.Log(mazeData.playerId);
+            Debug.Log(level);
+            Debug.Log("Does it get here then?");
+            Debug.Log(CrossSceneInformationClass.level);
+            Debug.Log(apiKeyRequest);
             yield return apiKeyRequest.SendWebRequest();
-
+            Debug.Log(apiKeyRequest.responseCode);
             // check for errors
             if (apiKeyRequest.isNetworkError || apiKeyRequest.isHttpError)
             {
+                Debug.Log("dfsdf");
                 Debug.LogError(apiKeyRequest.error);
             }
             else
@@ -500,7 +523,7 @@ public class MazeLoader : MonoBehaviour {
             }
 
         }
-
+        Debug.Log("So does it get here?");
         // define JSON body for HTTP REST PUT request
         string jsonBody = JsonUtility.ToJson(mazeData);
 

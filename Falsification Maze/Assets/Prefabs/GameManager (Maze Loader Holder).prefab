@@ -47,27 +47,30 @@ MonoBehaviour:
   mazeColumns: 10
   randomDeletesDivider: 0
   randomAdditionsDivider: 0
+  size: 7
+  heigth: 15
+  correctPath: 0
   wall: {fileID: 101274, guid: 2a571ace6952b154ca2ff06b0540f264, type: 3}
-  size: 6
-  timeLimit: 0
+  roof: {fileID: 0}
+  dotWall: {fileID: 0}
   materialFinish: {fileID: 2100000, guid: b5f3b49cab6337447a3e72cbfd6cc246, type: 2}
   materialPath: {fileID: 2100000, guid: 120cca34f02085b44b9c53ebf638fb16, type: 2}
   materialMarkerFar: {fileID: 2100000, guid: b9bad24c5f9af4d46a5a1104bde9bc30, type: 2}
   materialMarkerNear: {fileID: 2100000, guid: 216d3ceb2b1a74952ba44c38c490cb46, type: 2}
   materialMarkerCorrect: {fileID: 2100000, guid: 4266223be30694a5c82c30731f208a7f,
     type: 2}
-  symbols:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  symbolNames:
-  - 
-  - 
-  - 
-  - 
   materialNormal: {fileID: 0}
-  player: {fileID: 3550818245609008881, guid: 7e9e77995c533624ebdcad8fd00d61ca, type: 3}
-  light: {fileID: 0}
-  tilesCounterFieldObject: {fileID: 0}
-  tilesCounterField: {fileID: 0}
+  levelComplete: {fileID: 0}
+  timeOver: {fileID: 0}
+  fm: {fileID: 0}
+  initPathLength: 0
+  data: {fileID: 0}
+  player: {fileID: 0}
+  pauseCounter: 0
+  playerCollider: {fileID: 0}
+  timeSystem: {fileID: 0}
+  timeText: {fileID: 0}
+  levelText: {fileID: 0}
+  failedLevelText: {fileID: 0}
+  start: 0
+  maxTime: 5

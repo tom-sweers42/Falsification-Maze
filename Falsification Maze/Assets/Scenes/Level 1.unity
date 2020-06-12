@@ -680,7 +680,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press Spacebar to load main menu
+  m_text: Press Spacebar to go the next level
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -980,7 +980,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.9339623, g: 0.72795296, b: 0.074893214, a: 1}
-  m_Intensity: 2
+  m_Intensity: 5
   m_Range: 50
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -2424,6 +2424,16 @@ PrefabInstance:
     - target: {fileID: 3518446598499222071, guid: 7e9e77995c533624ebdcad8fd00d61ca,
         type: 3}
       propertyPath: lockAndHideCursor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3518446598499222071, guid: 7e9e77995c533624ebdcad8fd00d61ca,
+        type: 3}
+      propertyPath: drawStaminaMeter
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3518446598499222071, guid: 7e9e77995c533624ebdcad8fd00d61ca,
+        type: 3}
+      propertyPath: _crouchModifiers.useCrouch
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3550818245609008881, guid: 7e9e77995c533624ebdcad8fd00d61ca,
@@ -2619,7 +2629,7 @@ PrefabInstance:
     - target: {fileID: 4194800998294751530, guid: 0393e88e96b3c334b874ed4ac44fb3ab,
         type: 3}
       propertyPath: heigth
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 4194800998294751530, guid: 0393e88e96b3c334b874ed4ac44fb3ab,
         type: 3}
@@ -2666,6 +2676,11 @@ PrefabInstance:
       propertyPath: playerCollider
       value: 
       objectReference: {fileID: 269638048}
+    - target: {fileID: 4194800998294751530, guid: 0393e88e96b3c334b874ed4ac44fb3ab,
+        type: 3}
+      propertyPath: failedLevelText
+      value: 
+      objectReference: {fileID: 225218056}
     - target: {fileID: 4194800998294751531, guid: 0393e88e96b3c334b874ed4ac44fb3ab,
         type: 3}
       propertyPath: m_LocalPosition.x
