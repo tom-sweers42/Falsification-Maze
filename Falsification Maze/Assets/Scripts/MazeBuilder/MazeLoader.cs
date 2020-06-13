@@ -488,11 +488,16 @@ public class MazeLoader : MonoBehaviour {
         mazeData.fmTimeStampsLevels.Add(playerCollider.fmTimeStamps);
         mazeData.pauseCounterLevels.Add(pauseCounter);
         mazeData.intialShortestPathLengthLevels.Add(initPathLength);
+        mazeData.timeStampLevels.Add(GetTimestamp(DateTime.Now));
+
         // send maze data to firebase
         Debug.Log("Does it reach this!");
         StartCoroutine(SendData(mazeData, CrossSceneInformationClass.level));
     }
-
+    public static String GetTimestamp(DateTime value)
+    {
+        return value.ToString("dd-MM-yyyy -- HH:mm:ss");
+    }
     //======================================================================
     // DATA MANAGEMENT
     //======================================================================

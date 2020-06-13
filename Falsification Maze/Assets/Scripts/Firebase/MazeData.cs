@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System;
 using System.Collections;
 using System.Collections.Generic;
 public class MazeData : MonoBehaviour
@@ -20,6 +20,7 @@ public class MazeData : MonoBehaviour
 
     public List<int> pauseCounterLevels = new List<int>();
 
+    public List<String> timeStampLevels = new List<String>();
 
     void Start() {
 
