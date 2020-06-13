@@ -13,13 +13,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 1
-<<<<<<< HEAD
-  lastUpdatedAtString: 2020-06-12T17:51:54.259+02:00
-  initializedAtString: 2020-06-12T12:14:48.808+02:00
-=======
-  lastUpdatedAtString: 2020-06-12T12:08:32.404+02:00
-  initializedAtString: 2020-06-12T12:04:46.093+02:00
->>>>>>> 7503b71fe6c6cafdf099b5bc08c868fe79ed6b6d
+  lastUpdatedAtString: 2020-06-13T10:12:58.313+02:00
+  initializedAtString: 2020-06-13T10:12:56.780+02:00
   currentGitRemote:
     name: origin
     url: https://github.com/tom-sweers42/Falsification-Maze.git

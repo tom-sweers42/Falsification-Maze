@@ -13,22 +13,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 2
-<<<<<<< HEAD
-  lastUpdatedAtString: 2020-06-12T17:51:54.271+02:00
-  initializedAtString: 2020-06-12T15:49:58.085+02:00
-=======
-  lastUpdatedAtString: 2020-06-12T12:08:32.416+02:00
-  initializedAtString: 2020-06-12T12:08:32.393+02:00
->>>>>>> 7503b71fe6c6cafdf099b5bc08c868fe79ed6b6d
+  lastUpdatedAtString: 2020-06-13T10:12:58.331+02:00
+  initializedAtString: 2020-06-13T10:12:58.322+02:00
   localBranches:
   - name: master
     tracking: origin/master
   remoteBranches:
-  - name: origin/firebase-webrequester
-    tracking: '[None]'
   - name: origin/HEAD
-    tracking: '[None]'
-  - name: origin/master
     tracking: '[None]'
   remotes:
   - name: origin
@@ -52,22 +43,10 @@ MonoBehaviour:
     - origin
     subKeys:
     - Values:
-      - firebase-webrequester
       - HEAD
-      - master
     subKeyValues:
     - Values:
-      - name: firebase-webrequester
-        remote:
-          name: origin
-          url: https://github.com/tom-sweers42/Falsification-Maze.git
-        trackingBranch: 
       - name: HEAD
-        remote:
-          name: origin
-          url: https://github.com/tom-sweers42/Falsification-Maze.git
-        trackingBranch: 
-      - name: master
         remote:
           name: origin
           url: https://github.com/tom-sweers42/Falsification-Maze.git

@@ -47,8 +47,10 @@ public class MazeLoader : MonoBehaviour {
     // Finishing
     #region Finishing
     private bool finished = false;
+    private bool endGame = false;
     public GameObject levelComplete;
     public GameObject timeOver;
+    public GameObject eos;
     #endregion
 
 
@@ -158,7 +160,9 @@ public class MazeLoader : MonoBehaviour {
             }
             else
             {
-                Application.Quit();
+                eos.SetActive(true);
+                endGame = true;
+                //Application.Quit();
             }
         }
         if (finished & (Input.GetKeyDown(KeyCode.Space)))
@@ -172,8 +176,14 @@ public class MazeLoader : MonoBehaviour {
             }
             else
             {
-                Application.Quit();
+                eos.SetActive(true);
+                endGame = true;
+                //Application.Quit();
             }
+        }
+        if (endGame & (Input.GetKeyDown(KeyCode.M)))
+        {
+            SceneManager.LoadScene("Menu");
         }
     }
 

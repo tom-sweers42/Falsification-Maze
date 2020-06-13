@@ -2828,6 +2828,11 @@ PrefabInstance:
       propertyPath: failedLevelText
       value: 
       objectReference: {fileID: 73548326}
+    - target: {fileID: 4194800998294751530, guid: 0393e88e96b3c334b874ed4ac44fb3ab,
+        type: 3}
+      propertyPath: eos
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4194800998294751531, guid: 0393e88e96b3c334b874ed4ac44fb3ab,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -2436,16 +2436,6 @@ PrefabInstance:
       propertyPath: _crouchModifiers.useCrouch
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3518446598499222071, guid: 7e9e77995c533624ebdcad8fd00d61ca,
-        type: 3}
-      propertyPath: drawStaminaMeter
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3518446598499222071, guid: 7e9e77995c533624ebdcad8fd00d61ca,
-        type: 3}
-      propertyPath: _crouchModifiers.useCrouch
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3550818245609008881, guid: 7e9e77995c533624ebdcad8fd00d61ca,
         type: 3}
       propertyPath: m_Name
@@ -2674,7 +2664,7 @@ PrefabInstance:
     - target: {fileID: 4194800998294751530, guid: 0393e88e96b3c334b874ed4ac44fb3ab,
         type: 3}
       propertyPath: maxTime
-      value: 2
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 4194800998294751530, guid: 0393e88e96b3c334b874ed4ac44fb3ab,
         type: 3}
@@ -2691,6 +2681,11 @@ PrefabInstance:
       propertyPath: failedLevelText
       value: 
       objectReference: {fileID: 225218056}
+    - target: {fileID: 4194800998294751530, guid: 0393e88e96b3c334b874ed4ac44fb3ab,
+        type: 3}
+      propertyPath: eos
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4194800998294751531, guid: 0393e88e96b3c334b874ed4ac44fb3ab,
         type: 3}
       propertyPath: m_LocalPosition.x
