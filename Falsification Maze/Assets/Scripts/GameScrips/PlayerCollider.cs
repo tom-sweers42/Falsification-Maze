@@ -23,22 +23,22 @@ public class PlayerCollider : MonoBehaviour
 
     // FM Texts
     private String[] fmTexts = new String [] {
-        "Did you notice the markings on the roof?",
-        "Have you noticed the green dot on the roof?",
-        "Did you consider the dots on the roof for your decision?",
+        "Did you notice the markings on the ceiling?",
+        "Have you noticed the green dot on the ceiling?",
+        "Did you consider the dots on the ceiling for your decision?",
         "Have you seen the markings?"
     };
 
     private List<String> fmTextsType1 = new List<String>(){
-        "Did you notice the markings on the roof?",
-        "Have you noticed the green dot on the roof?",
-        "Did you consider the dots on the roof for your decision?",
+        "Did you notice the markings on the ceiling?",
+        "Have you noticed the green dot on the ceiling?",
+        "Did you consider the dots on the ceiling for your decision?",
         "Have you seen the markings?"
     };
 
     private List<String> fmTextsType2 = new List<String>(){
         "Did you see the middle dots turning more red?",
-        "Have you looked at the middle dots on the roof?"
+        "Have you looked at the middle dots on the ceiling?"
     };
 
     private List<String> fmTextsType3 = new List<String>(){
@@ -59,7 +59,7 @@ public class PlayerCollider : MonoBehaviour
     public List<float> fmTimeStamps = new List<float>();
 
     void Start() {
-        transform.position = new Vector3(0, -gameManager.heigth/2f, 0);
+        transform.position = new Vector3(0, -gameManager.heigth/2f + 1f, 0);
     }
     void Update() {
 

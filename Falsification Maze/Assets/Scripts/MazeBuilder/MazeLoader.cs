@@ -183,6 +183,8 @@ public class MazeLoader : MonoBehaviour {
         }
         if (endGame & (Input.GetKeyDown(KeyCode.M)))
         {
+            UnityEngine.Cursor.lockState = CursorLockMode.None;
+            UnityEngine.Cursor.visible = true;
             SceneManager.LoadScene("Menu");
         }
     }
