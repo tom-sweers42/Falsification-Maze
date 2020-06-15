@@ -66,7 +66,7 @@ public class FirebaseWebRequester : MonoBehaviour
 
                 Debug.Log("API Key: " + apiKey);
             }
-            
+
         }
 
         // define user data

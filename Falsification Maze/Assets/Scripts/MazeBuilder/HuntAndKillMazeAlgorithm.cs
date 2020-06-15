@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿
+// The code in this file is taken from https://github.com/lonedevdotcom/MazeGenerator at 29-03-2020
+// The author is github user lonedevdotcom
+// The code in this file is unchanged.
+using UnityEngine;
 using System.Collections;
 
 public class HuntAndKillMazeAlgorithm : MazeAlgorithm {
@@ -26,8 +30,8 @@ public class HuntAndKillMazeAlgorithm : MazeAlgorithm {
 
 	private void Kill() {
 		while (RouteStillAvailable (currentRow, currentColumn)) {
-			int direction = Random.Range (1, 5);
-			// int direction = ProceduralNumberGenerator.GetNextNumber ();
+			// int direction = Random.Range (1, 5);
+			int direction = ProceduralNumberGenerator.GetNextNumber ();
 
 			if (direction == 1 && CellIsAvailable (currentRow - 1, currentColumn)) {
 				// North

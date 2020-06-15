@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿
+// The code in this file is taken from https://github.com/lonedevdotcom/MazeGenerator at 29-03-2020
+// The author is github user lonedevdotcom
+// The code in this file is changed signifcantly. See the comments in the rest of the file.
+
+using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
 using System.Collections;
@@ -10,6 +15,8 @@ using UnityEngine.Networking;
 using SimpleJSON;
 
 public class MazeLoader : MonoBehaviour {
+
+    // Only the mazerows,mazecollums,mazezells, wall and size attributes were the originally,
     #region Variables
     // Maze intstantiators
     #region Maze Instantiators
@@ -95,6 +102,7 @@ public class MazeLoader : MonoBehaviour {
 
 
         data = GameObject.Find("Data");
+        //The following three lines were there originally
 		InitializeMaze ();
 		MazeAlgorithm ma = new HuntAndKillMazeAlgorithm (mazeCells);
 		ma.CreateMaze ();
@@ -121,6 +129,7 @@ public class MazeLoader : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        //This function was empty initially
         if (fm != null) {
             fm.gameObject.transform.position = new Vector3 (Screen.width * 0.5f, Screen.height * 0.2f,0);
         }
@@ -183,6 +192,8 @@ public class MazeLoader : MonoBehaviour {
         }
         if (endGame & (Input.GetKeyDown(KeyCode.M)))
         {
+            UnityEngine.Cursor.lockState = CursorLockMode.None;
+            UnityEngine.Cursor.visible = true;
             SceneManager.LoadScene("Menu");
         }
     }
@@ -193,7 +204,9 @@ public class MazeLoader : MonoBehaviour {
 
     private void InitializeMaze()
     {
-
+        //this function is changed in some small parts.
+        // A roof tiles was added for each cell.
+        // The positioning and size of some wall parts was changed.
         mazeCells = new MazeCell[mazeRows, mazeColumns];
         for (int r = 0; r < mazeRows; r++)
         {
@@ -237,6 +250,7 @@ public class MazeLoader : MonoBehaviour {
                 mazeCells[r, c].southWall.name = "South Wall " + r + "," + c;
                 mazeCells[r, c].southWall.transform.Rotate(Vector3.up * 90f);
 
+                // End part was added by us.
                 if (c == mazeColumns - 1 && r == mazeRows - 1)
                 {
                     mazeCells[r, c].floor.name = "END";
@@ -254,6 +268,7 @@ public class MazeLoader : MonoBehaviour {
         }
     }
 
+    //our own function (not used anymore)
     public void DeleteRandomWalls()
     {
         int randomDeletes = Convert.ToInt32((mazeColumns * mazeRows) / randomDeletesDivider);
@@ -280,6 +295,7 @@ public class MazeLoader : MonoBehaviour {
         }
     }
 
+    // Our own function
     private bool DestroyWallIfItExists(GameObject wall)
     {
         if (wall != null)
@@ -291,6 +307,7 @@ public class MazeLoader : MonoBehaviour {
         return false;
     }
 
+    // Our own function
     public int LongestPathLength(MazeCell cell)
     {
         int maxPathLength = 0;
@@ -308,6 +325,7 @@ public class MazeLoader : MonoBehaviour {
             return 0;
     }
 
+    // Our own function
     public void ClearPath()
     {
         for (int r = 0; r < mazeRows; r++)
@@ -329,6 +347,7 @@ public class MazeLoader : MonoBehaviour {
     // ADD COLOR CUES
     //======================================================================
 
+    // Our own function
     void AddPathBasedColor()
     {
 
@@ -342,6 +361,7 @@ public class MazeLoader : MonoBehaviour {
         }
     }
 
+    // Our own function
     public Color colourDirDot(int pathLength, int newPathLength)
     {
         int diff = pathLength - newPathLength;
@@ -359,6 +379,7 @@ public class MazeLoader : MonoBehaviour {
         }
     }
 
+    // Our own function
     void ColorCode(MazeCell cell) {
         int maxLength = LongestPathLength(mazeCells[mazeRows-1, mazeColumns-1]);
 
@@ -456,6 +477,7 @@ public class MazeLoader : MonoBehaviour {
     // GAME MANAGEMENT
     //======================================================================
 
+    // Our own function
     public void gameWon()
     {
         MazeData mazeData = data.GetComponent<MazeData>();
@@ -469,6 +491,7 @@ public class MazeLoader : MonoBehaviour {
 
     }
 
+    // Our own function
     public void gameLost()
     {
         MazeData mazeData = data.GetComponent<MazeData>();
@@ -476,6 +499,7 @@ public class MazeLoader : MonoBehaviour {
         gameOver();
     }
 
+    // Our own function
     public void gameOver(){
         Debug.Log("Level: " + CrossSceneInformationClass.level + "Game Over...");
         // update Maze Data
@@ -494,6 +518,7 @@ public class MazeLoader : MonoBehaviour {
         Debug.Log("Does it reach this!");
         StartCoroutine(SendData(mazeData, CrossSceneInformationClass.level));
     }
+    // Our own function
     public static String GetTimestamp(DateTime value)
     {
         return value.ToString("dd-MM-yyyy -- HH:mm:ss");

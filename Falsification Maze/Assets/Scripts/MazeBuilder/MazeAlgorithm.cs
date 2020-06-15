@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿
+// The code in this file is taken from https://github.com/lonedevdotcom/MazeGenerator at 29-03-2020
+// The author is github user lonedevdotcom
+// The code in this file is changed signifcantly. We have added some functions. In the file itself we
+// tell whether a function was added by us.
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -19,6 +25,7 @@ public abstract class MazeAlgorithm {
 
 	public abstract void CreateMaze ();
 
+    //This function is added by us.
     public (MazeCell, MazeCell) findWrongFinish(int pathLength){
         MazeCell next = mazeCells[0,0];
         MazeCell greenPathFinishCell = null;
@@ -40,6 +47,8 @@ public abstract class MazeAlgorithm {
         }
         return (greenPathFinishCell, next);
     }
+
+    // This function is added by us.
     public int addShortestPaths(Material materialPath, int r, int c, int fr, int fc) {
 
         foreach (MazeCell cell in mazeCells) {
@@ -62,6 +71,7 @@ public abstract class MazeAlgorithm {
         return pathLength; // return value for wall coloring
     }
 
+    // This function is added by us.
     public (int, MazeCell) longestPath(MazeCell cell) {
         int maxPathLength = 0;
         MazeCell maxDeepCell = cell;
@@ -77,6 +87,8 @@ public abstract class MazeAlgorithm {
         }
         return (0, cell);
     }
+
+    // This function is added by us.
     public void shortestPath(Queue<List<MazeCell>> currentPaths, Queue<MazeCell> mazeQueue, MazeCell cell) {
         if (cell.r>0 && !mazeCells[cell.r-1, cell.c].southWall.activeSelf && !mazeCells[cell.r-1, cell.c].discovered) {
             mazeQueue.Enqueue(mazeCells[cell.r-1, cell.c]);

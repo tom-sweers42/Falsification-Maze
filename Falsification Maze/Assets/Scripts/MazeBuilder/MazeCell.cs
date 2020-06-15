@@ -1,11 +1,17 @@
-﻿using UnityEngine;
+﻿
+// The code in this file is taken from https://github.com/lonedevdotcom/MazeGenerator at 29-03-2020
+// The author is github user lonedevdotcom
+// The code in this file is changed signifcantly. only the class definition and the wall and floor attributes are not made by us
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System;
 
+
+// The class definition is not from us.
 public class MazeCell {
 
-    //Gameobjects
+    //Gameobjects: The first 5 were made by the original authors. The roof was added by us.
 	public GameObject northWall, southWall, eastWall, westWall, floor, roof;
 
     // Mazeinfo
